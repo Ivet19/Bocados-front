@@ -106,4 +106,4 @@ npm run build
 
 ## 📃 License
 
-MIT © [Your Name or Organization]
+MIT © Ivet López Prados.

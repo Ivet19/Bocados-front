@@ -1,3 +1,8 @@
+:root {
+  --primary-color: #2a3b2e;
+  --secondary-color: #f3f0e3;
+}
+
 *,
 ::after,
 ::before {
@@ -6,11 +11,14 @@
 
 body {
   margin: 0;
+  font-family: "Text Me One", sans-serif;
+  background-color: var(--primary-color);
 }
 
-.main-container {
-  height: 100vh;
-  max-width: 1900px;
-  margin: 0 auto;
-  padding: 20px;
+h1 {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
 }
