@@ -3,11 +3,9 @@ import Header from "../Header/Header";
 
 const Layout: React.FC = () => {
   return (
-    <>
-      <main className="main-container">
-        <Header />
-      </main>
-    </>
+    <main className="main-container">
+      <Header />
+    </main>
   );
 };
 
