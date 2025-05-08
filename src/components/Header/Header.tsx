@@ -6,7 +6,6 @@ const Header: React.FC = () => {
     <header className="main-header">
       <div className="page-title-container" aria-label="Bocados">
         <h1 className="page-title">
-          {" "}
           <img
             className="page-title__image"
             src="logo.svg"
