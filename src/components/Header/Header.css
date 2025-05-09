@@ -10,6 +10,7 @@
 }
 
 .page-title {
+  font-family: "Text Me One", sans-serif;
   font-size: 3.125rem;
   font-weight: 400;
   color: var(--secondary-color);

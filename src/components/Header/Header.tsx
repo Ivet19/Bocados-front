@@ -8,7 +8,7 @@ const Header: React.FC = () => {
         <h1 className="page-title">
           <img
             className="page-title__image"
-            src="logo.svg"
+            src="images/logo.svg"
             alt="B"
             width={60}
             height={70}
