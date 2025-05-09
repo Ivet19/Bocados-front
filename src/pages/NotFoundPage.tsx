@@ -1,4 +1,4 @@
-import "./notFoundPage.css";
+import "./NotFoundPage.css";
 
 const NotFoundPage: React.FC = () => {
   return (
