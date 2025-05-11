@@ -6,7 +6,7 @@ import type {
 } from "./types";
 
 class RestaurantsClient implements RestaurantClientStructure {
-  private apiUrl = import.meta.env.VITE_API_URL;
+  private readonly apiUrl = import.meta.env.VITE_API_URL;
 
   public getRestaurants = async (
     pageNumber?: number,
