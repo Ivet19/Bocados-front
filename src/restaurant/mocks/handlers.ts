@@ -1,6 +1,7 @@
 import { http, HttpResponse } from "msw";
 import type { RestaurantDto } from "../dto/typesDto";
 import {
+  moviesRestaurants,
   moviesRestaurantsFirstPageDto,
   moviesRestaurantsSecondPageDto,
 } from "../dto/fixturesDto";
@@ -21,7 +22,7 @@ export const handlers = http.get(`${apiUrl}/restaurants`, ({ request }) => {
       restaurantsTotal: number;
     }>({
       restaurants: moviesRestaurantsSecondPageDto,
-      restaurantsTotal: moviesRestaurantsSecondPageDto.length,
+      restaurantsTotal: moviesRestaurants.length,
     });
   }
 
@@ -30,6 +31,6 @@ export const handlers = http.get(`${apiUrl}/restaurants`, ({ request }) => {
     restaurantsTotal: number;
   }>({
     restaurants: moviesRestaurantsFirstPageDto,
-    restaurantsTotal: moviesRestaurantsFirstPageDto.length,
+    restaurantsTotal: moviesRestaurants.length,
   });
 });

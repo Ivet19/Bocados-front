@@ -102,13 +102,21 @@ export const moesTavern: RestaurantDto = {
   visitDate: new Date("2024-09-23").toISOString(),
 };
 
-export const moviesRestaurantsFirstPageDto = [
+export const moviesRestaurants = [
   jackRabbitSlims,
   gusteaus,
   leakyCauldron,
   pizzaPlanet,
   kelpShake,
   moesTavern,
+];
+
+export const moviesRestaurantsFirstPageDto = [
+  jackRabbitSlims,
+  gusteaus,
+  leakyCauldron,
+  pizzaPlanet,
+  kelpShake,
 ];
 
 export const moviesRestaurantsSecondPageDto = [moesTavern];

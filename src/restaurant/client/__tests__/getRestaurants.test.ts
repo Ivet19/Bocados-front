@@ -19,14 +19,15 @@ describe("Given the getPosts method of PostClient", () => {
     });
 
     test("Then it should return 6 to as the total number of restaurants", async () => {
+      const expectedRestaurantsTotal = 6;
+
       const restaurantsClient = new RestaurantsClient();
 
       const restaurantsData = await restaurantsClient.getRestaurants();
 
-      const restaurants = restaurantsData.restaurants;
       const restaurantsTotal = restaurantsData.restaurantsTotal;
 
-      expect(restaurantsTotal).toBe(restaurants.length);
+      expect(restaurantsTotal).toBe(expectedRestaurantsTotal);
     });
   });
 
