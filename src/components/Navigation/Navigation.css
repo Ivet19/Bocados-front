@@ -8,6 +8,7 @@
   bottom: 0;
   border-top: 1px solid var(--secondary-color);
   border-bottom: 1px solid var(--secondary-color);
+  background-color: var(--primary-color);
 }
 
 .navigation__link {

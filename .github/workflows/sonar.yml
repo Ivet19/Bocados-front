@@ -5,6 +5,10 @@ on:
       - main
   pull_request:
     types: [opened, synchronize, reopened]
+
+env:
+  VITE_API_URL: ${{ secrets.VITE_API_URL}}
+
 jobs:
   sonarcloud:
     name: SonarCloud
