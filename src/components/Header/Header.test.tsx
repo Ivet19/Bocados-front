@@ -4,12 +4,12 @@ import Header from "./Header";
 describe("Given the Header component", () => {
   describe("When it renders", () => {
     test("Then it should show 'BOCADOS' inside a level 1 heading", () => {
-      const expectedHeadingText = /b\s*ocados/i;
+      const expectedTitle = /bocados/i;
 
       render(<Header />);
 
       const appTitle = screen.getByRole("heading", {
-        name: expectedHeadingText,
+        name: expectedTitle,
         level: 1,
       });
 

@@ -4,8 +4,8 @@ import "./Header.css";
 const Header: React.FC = () => {
   return (
     <header className="main-header">
-      <div className="page-title-container" aria-label="Bocados">
-        <h1 className="page-title">
+      <div className="page-title-container">
+        <h1 className="page-title" aria-label="Bocados">
           <img
             className="page-title__image"
             src="images/logo.svg"
