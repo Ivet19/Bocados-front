@@ -29,11 +29,6 @@ export const mapRestaurantsDtoToRestaurants = (
 export const mapRestaurantDtoToRestaurant = ({
   _id,
   name,
-  servingsAmount,
-  waitTime,
-  customerService,
-  priceCategory,
-  rating,
   visitDate,
   ...restaurantsDto
 }: RestaurantDto): Restaurant => {
@@ -43,26 +38,6 @@ export const mapRestaurantDtoToRestaurant = ({
     name,
     imageAlt: `the dining area of ${name} restaurant`,
   };
-
-  if (servingsAmount) {
-    restaurant.servingsAmount = servingsAmount;
-  }
-
-  if (waitTime) {
-    restaurant.waitTime = waitTime;
-  }
-
-  if (customerService) {
-    restaurant.customerService = customerService;
-  }
-
-  if (priceCategory) {
-    restaurant.priceCategory = priceCategory;
-  }
-
-  if (typeof rating !== "undefined") {
-    restaurant.rating = rating;
-  }
 
   if (visitDate) {
     restaurant.visitDate = new Date(visitDate).toLocaleDateString("es-ES", {
