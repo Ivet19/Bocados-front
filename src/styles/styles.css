@@ -1,6 +1,7 @@
 :root {
   --primary-color: #2a3b2e;
   --secondary-color: #f3f0e3;
+  --border-primary-color: 1px solid var(--primary-color);
 }
 
 *,
@@ -41,4 +42,5 @@ ul,
 li,
 p {
   margin: 0;
+  padding: 0;
 }
