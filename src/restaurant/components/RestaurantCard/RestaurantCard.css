@@ -27,6 +27,7 @@
   border-top: var(--border-primary-color);
   border-bottom: var(--border-primary-color);
   width: 100%;
+  object-fit: cover;
 }
 
 .restaurant__info {

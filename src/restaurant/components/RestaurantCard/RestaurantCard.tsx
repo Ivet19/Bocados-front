@@ -18,7 +18,12 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
     <article className="restaurant">
       <div className="restaurant__top-info">
         <h3 className="restaurant__name">{name}</h3>
-        <img src={checkIcon} alt={`${checkIconColor} check icon`} />
+        <img
+          src={checkIcon}
+          alt={`${checkIconColor} check icon`}
+          width={35}
+          height={35}
+        />
       </div>
       <img
         className="restaurant__image"
