@@ -20,8 +20,8 @@ describe("Given the loadRestaurants function", () => {
         result.current.loadRestaurants(2);
       });
 
-      const restaurants = result.current.restaurants.restaurants;
-      const restaurantsTotal = result.current.restaurants.restaurantsTotal;
+      const restaurants = result.current.restaurantsData.restaurants;
+      const restaurantsTotal = result.current.restaurantsData.restaurantsTotal;
 
       expect(restaurants).toContainEqual(
         expect.objectContaining({

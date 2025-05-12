@@ -4,7 +4,7 @@ import RestaurantsClient from "../client/RestaurantClient";
 import { loadRestaurantsActionCreator } from "../slice/restaurantSlice";
 
 const useRestaurants = () => {
-  const restaurants = useAppSelector(
+  const restaurantsData = useAppSelector(
     (state) => state.restaurantsReducer.restaurantsData,
   );
 
@@ -24,7 +24,7 @@ const useRestaurants = () => {
   );
 
   return {
-    restaurants,
+    restaurantsData,
     loadRestaurants,
   };
 };
