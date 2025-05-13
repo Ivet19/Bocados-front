@@ -1,17 +1,21 @@
 import { render, screen } from "@testing-library/react";
-import Layout from "./Layout";
-import "./Layout.css";
 import { MemoryRouter } from "react-router";
+import { Provider } from "react-redux";
+import userEvent from "@testing-library/user-event";
+import Layout from "./Layout";
+import store from "../../store/store";
+import AppRouter from "../../router/AppRouter";
+import "./Layout.css";
 
 describe("Given the Layout component", () => {
   describe("When it renders", () => {
     test("Then it should show 'BOCADOS' inside a level 1 heading", () => {
-      const expectedHeadingText = /b\s*ocados/i;
+      const expectedTitle = /bocados/i;
 
       render(<Layout />, { wrapper: MemoryRouter });
 
       const appTitle = screen.getByRole("heading", {
-        name: expectedHeadingText,
+        name: expectedTitle,
         level: 1,
       });
 
@@ -26,6 +30,62 @@ describe("Given the Layout component", () => {
       });
 
       expect(restaurantsLink).toBeVisible();
+    });
+  });
+
+  describe("When it renders in path /restaurants", () => {
+    describe("And the user clicks the link 'siguiente'", () => {
+      test("Then it should show moe's tavern inside a heading in the new page", async () => {
+        const expectedSecondPageTitle = new RegExp("moe's tavern", "i");
+
+        render(
+          <Provider store={store}>
+            <MemoryRouter initialEntries={["/restaurants"]}>
+              <Layout />
+              <AppRouter />
+            </MemoryRouter>
+          </Provider>,
+        );
+
+        const nextPageLink = screen.getByRole("link", { name: /siguiente/i });
+
+        await userEvent.click(nextPageLink);
+
+        const currentPage2 = await screen.findByRole("heading", {
+          name: expectedSecondPageTitle,
+        });
+
+        expect(currentPage2).toBeVisible();
+      });
+    });
+  });
+
+  describe("When it renders in in path /restaurants?page=2", () => {
+    describe("And the user clicks the link 'anterior'", () => {
+      test("Then it should show Jack Rabbit Slim's inside a heading in the new page", async () => {
+        const expectedFirstPageTitle = new RegExp("jack rabbit slim's", "i");
+
+        render(
+          <Provider store={store}>
+            <MemoryRouter initialEntries={["/restaurants"]}>
+              <Layout />
+              <AppRouter />
+            </MemoryRouter>
+          </Provider>,
+        );
+
+        const previousPageLink = screen.getByRole("link", {
+          name: /anterior/i,
+        });
+
+        await userEvent.click(previousPageLink);
+
+        const currentPage = await screen.findByRole("heading", {
+          name: expectedFirstPageTitle,
+        });
+
+        expect(currentPage).toBeVisible();
+      });
     });
   });
 });

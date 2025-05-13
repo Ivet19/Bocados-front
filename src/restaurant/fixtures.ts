@@ -108,3 +108,22 @@ export const moesTavern: Restaurant = {
   visitDate: "23 de septiembre de 2024",
   imageAlt: "the dining area of Moe's Tavern restaurant",
 };
+
+export const moviesRestaurants = [
+  jackRabbitSlims,
+  gusteaus,
+  leakyCauldron,
+  pizzaPlanet,
+  kelpShake,
+  moesTavern,
+];
+
+export const moviesRestaurantsFirstPage = [
+  jackRabbitSlims,
+  gusteaus,
+  leakyCauldron,
+  pizzaPlanet,
+  kelpShake,
+];
+
+export const moviesRestaurantsSecondPage = [moesTavern];
