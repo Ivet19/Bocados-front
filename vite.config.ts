@@ -10,7 +10,7 @@ export default defineConfig({
     setupFiles: ["src/setupTests.ts"],
     coverage: {
       reportsDirectory: "./coverage",
-      exclude: ["src/main.tsx", "**/*.d.ts", "**/*.config.*", "**/App.tsx"],
+      exclude: ["src/main.tsx", "**/*.d.ts", "**/*.config.*"],
       provider: "v8",
       reporter: ["text", "json", "html", "lcov"],
       include: ["**/*.ts", "**/*.tsx"],
