@@ -1,7 +1,7 @@
-import type { RestaurantDto } from "./typesDto";
+import type { Restaurant } from "./types";
 
-export const jackRabbitSlimsDto: RestaurantDto = {
-  _id: "662a1c9d7f8b9f001a1b0011",
+export const jackRabbitSlims: Restaurant = {
+  id: "662a1c9d7f8b9f001a1b0011",
   name: "Jack Rabbit Slim's",
   adress: "Los Angeles, CA",
   foodType: "Americana retro",
@@ -9,10 +9,11 @@ export const jackRabbitSlimsDto: RestaurantDto = {
   description:
     "El restaurante de temática cincuentera que aparece en 'Pulp Fiction', donde Vincent Vega y Mia Wallace comparten una famosa escena de baile. Ambientado con camareros disfrazados de íconos de los años 50 y decorado con coches clásicos como mesas. Sirve hamburguesas, batidos caros y rock and roll como acompañamiento.",
   isVisited: false,
+  imageAlt: "the dining area of Jack Rabbit Slim's restaurant",
 };
 
-export const gusteausDto: RestaurantDto = {
-  _id: "662a1c9d7f8b9f001a1b0012",
+export const gusteaus: Restaurant = {
+  id: "662a1c9d7f8b9f001a1b0012",
   name: "Gusteau's",
   adress: "Paris, Francia",
   foodType: "Francesa gourmet",
@@ -20,10 +21,11 @@ export const gusteausDto: RestaurantDto = {
   description:
     "Restaurante ficticio de la película 'Ratatouille', anteriormente con tres estrellas Michelin. Tras la caída en desgracia de su fundador, el restaurante revive bajo la dirección de Linguini y Remy, una rata con gran talento culinario. Cocina francesa refinada, con atención al detalle, calidad y pasión por la gastronomía.",
   isVisited: false,
+  imageAlt: "the dining area of Gusteau's restaurant",
 };
 
-export const leakyCauldronDto: RestaurantDto = {
-  _id: "662a1c9d7f8b9f001a1b0013",
+export const leakyCauldron: Restaurant = {
+  id: "662a1c9d7f8b9f001a1b0013",
   name: "The Leaky Cauldron",
   adress: "Charing Cross Road, Londres (Mundo Mágico)",
   foodType: "Británica mágica",
@@ -36,11 +38,12 @@ export const leakyCauldronDto: RestaurantDto = {
   customerService: "Bueno",
   priceCategory: "Medio",
   rating: 4.3,
-  visitDate: new Date("2024-10-05").toISOString(),
+  visitDate: "5 de octubre de 2024",
+  imageAlt: "the dining area of The Leaky Cauldron restaurant",
 };
 
-export const pizzaPlanetDto: RestaurantDto = {
-  _id: "662a1c9d7f8b9f001a1b0014",
+export const pizzaPlanet: Restaurant = {
+  id: "662a1c9d7f8b9f001a1b0014",
   name: "Pizza Planet",
   adress: "California, EE.UU.",
   foodType: "Pizza y arcade",
@@ -52,10 +55,11 @@ export const pizzaPlanetDto: RestaurantDto = {
   waitTime: "Mucho",
   customerService: "Regular",
   priceCategory: "Bajo",
+  imageAlt: "the dining area of Pizza Planet restaurant",
 };
 
-export const threeBroomsticksDto: RestaurantDto = {
-  _id: "662a1c9d7f8b9f001a1b0015",
+export const threeBroomsticks: Restaurant = {
+  id: "662a1c9d7f8b9f001a1b0015",
   name: "The Three Broomsticks",
   adress: "Hogsmeade, Escocia",
   foodType: "Tavern / mágica",
@@ -67,11 +71,12 @@ export const threeBroomsticksDto: RestaurantDto = {
   customerService: "Muy bueno",
   priceCategory: "Medio",
   rating: 4.7,
-  visitDate: new Date("2025-02-12").toISOString(),
+  visitDate: "12 de febrero de 2025",
+  imageAlt: "the dining area of The Three Broomsticks restaurant",
 };
 
-export const kelpShakeDto: RestaurantDto = {
-  _id: "662a1c9d7f8b9f001a1b0016",
+export const kelpShake: Restaurant = {
+  id: "662a1c9d7f8b9f001a1b0016",
   name: "Kelp Shake",
   adress: "Fondo de Bikini",
   foodType: "Marina ficticia",
@@ -83,11 +88,12 @@ export const kelpShakeDto: RestaurantDto = {
   waitTime: "Poco",
   customerService: "Regular",
   rating: 3.2,
-  visitDate: new Date("2025-01-05").toISOString(),
+  visitDate: "5 de enero de 2025",
+  imageAlt: "the dining area of Kelp Shake restaurant",
 };
 
-export const moesTavernDto: RestaurantDto = {
-  _id: "662a1c9d7f8b9f001a1b0017",
+export const moesTavern: Restaurant = {
+  id: "662a1c9d7f8b9f001a1b0017",
   name: "Moe's Tavern",
   adress: "742 Evergreen Terrace, Springfield",
   foodType: "Pub americano",
@@ -99,24 +105,6 @@ export const moesTavernDto: RestaurantDto = {
   customerService: "Bueno",
   priceCategory: "Bajo",
   rating: 4.0,
-  visitDate: new Date("2024-09-23").toISOString(),
+  visitDate: "23 de septiembre de 2024",
+  imageAlt: "the dining area of Moe's Tavern restaurant",
 };
-
-export const moviesRestaurantsDto = [
-  jackRabbitSlimsDto,
-  gusteausDto,
-  leakyCauldronDto,
-  pizzaPlanetDto,
-  kelpShakeDto,
-  moesTavernDto,
-];
-
-export const moviesRestaurantsFirstPageDto = [
-  jackRabbitSlimsDto,
-  gusteausDto,
-  leakyCauldronDto,
-  pizzaPlanetDto,
-  kelpShakeDto,
-];
-
-export const moviesRestaurantsSecondPageDto = [moesTavernDto];
