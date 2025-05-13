@@ -6,13 +6,13 @@ import "./Layout.css";
 
 const Layout: React.FC = () => {
   return (
-    <>
+    <div className="container">
       <Header />
       <Navigation />
       <main className="main-container">
         <Outlet />
       </main>
-    </>
+    </div>
   );
 };
 
