@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import useRestaurants from "../../hooks/useRestaurants";
 import { useSearchParams } from "react-router";
+import Pagination from "../../../components/Pagination/Pagination";
 import RestaurantsList from "../../components/RestaurantsList/RestaurantsList";
 import "./RestaurantsPage.css";
 
@@ -27,6 +28,10 @@ const RestaurantsPage: React.FC = () => {
         </span>
       </header>
       <RestaurantsList restaurants={restaurants} />
+      <Pagination
+        restaurantsTotal={restaurantsTotal}
+        currentPage={pageNumber}
+      />
     </>
   );
 };
