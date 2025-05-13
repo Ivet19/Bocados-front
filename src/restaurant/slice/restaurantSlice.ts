@@ -15,11 +15,16 @@ const restaurantSlice = createSlice({
   reducers: {
     loadRestaurants: (
       currentState,
-      action: PayloadAction<RestaurantsData>,
+      {
+        payload: { restaurants, restaurantsTotal },
+      }: PayloadAction<RestaurantsData>,
     ): RestaurantState => {
       return {
         ...currentState,
-        restaurantsData: action.payload,
+        restaurantsData: {
+          restaurants: [...restaurants],
+          restaurantsTotal,
+        },
       };
     },
   },
