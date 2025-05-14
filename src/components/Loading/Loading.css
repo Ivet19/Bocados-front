@@ -10,3 +10,20 @@
   font-size: 1.75rem;
   font-weight: 400;
 }
+
+@keyframes tilt {
+  0% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(-5deg);
+  }
+}
+
+.loading__image {
+  animation: tilt 2s ease-in-out infinite;
+  transform-origin: center;
+}
