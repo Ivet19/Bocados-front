@@ -11,7 +11,7 @@ describe("Given the RestaurantCard component", () => {
 
       render(
         <Provider store={store}>
-          <RestaurantCard restaurant={moesTavern} />
+          <RestaurantCard restaurant={moesTavern} position={0} />
         </Provider>,
       );
 
@@ -25,7 +25,7 @@ describe("Given the RestaurantCard component", () => {
     test("Then it should show an image of the dining area of Moe's Tavern restaurant", () => {
       render(
         <Provider store={store}>
-          <RestaurantCard restaurant={moesTavern} />
+          <RestaurantCard restaurant={moesTavern} position={0} />
         </Provider>,
       );
 
@@ -37,7 +37,7 @@ describe("Given the RestaurantCard component", () => {
     test("Then it should show Pub americano as the restaurant's food type", () => {
       render(
         <Provider store={store}>
-          <RestaurantCard restaurant={moesTavern} />
+          <RestaurantCard restaurant={moesTavern} position={0} />
         </Provider>,
       );
 

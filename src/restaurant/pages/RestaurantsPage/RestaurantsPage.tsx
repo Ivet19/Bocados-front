@@ -16,6 +16,8 @@ const RestaurantsPage: React.FC = () => {
     : 1;
 
   useEffect(() => {
+    window.scrollTo({ top: 0 });
+
     loadRestaurants(pageNumber);
   }, [loadRestaurants, pageNumber]);
 
