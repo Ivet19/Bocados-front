@@ -3,11 +3,15 @@ import "./RestaurantCard.css";
 
 interface RestaurantCardProps {
   restaurant: Restaurant;
+  position: number;
 }
 
 const RestaurantCard: React.FC<RestaurantCardProps> = ({
   restaurant: { name, adress, foodType, imageUrl, imageAlt, isVisited, rating },
+  position,
 }) => {
+  const loadingType = position <= 1 ? "eager" : "lazy";
+
   const checkIcon = isVisited
     ? "/icons/Visited-green.svg"
     : "/icons/Visited-grey.svg";
@@ -29,8 +33,9 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
         className="restaurant__image"
         src={imageUrl}
         alt={imageAlt}
-        width={319}
-        height={180}
+        width={354}
+        height={200}
+        loading={loadingType}
       />
       <div className="restaurant__bottom-info">
         <div className="restaurant__info">
