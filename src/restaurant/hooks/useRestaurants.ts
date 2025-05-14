@@ -1,11 +1,18 @@
 import { useCallback, useMemo } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import RestaurantsClient from "../client/RestaurantClient";
-import { loadRestaurantsActionCreator } from "../slice/restaurantSlice";
+import {
+  isLoading,
+  loadRestaurantsActionCreator,
+} from "../slice/restaurantSlice";
 
 const useRestaurants = () => {
   const restaurantsData = useAppSelector(
     (state) => state.restaurantsReducer.restaurantsData,
+  );
+
+  const loadingStatus = useAppSelector(
+    (state) => state.restaurantsReducer.status,
   );
 
   const dispatch = useAppDispatch();
@@ -14,7 +21,13 @@ const useRestaurants = () => {
 
   const loadRestaurants = useCallback(
     async (pageNumber?: number): Promise<void> => {
+      const timeout = setTimeout(() => {
+        dispatch(isLoading());
+      }, 500);
+
       const restaurantsData = await restaurantClient.getRestaurants(pageNumber);
+
+      clearTimeout(timeout);
 
       const action = loadRestaurantsActionCreator(restaurantsData);
 
@@ -26,6 +39,7 @@ const useRestaurants = () => {
   return {
     restaurantsData,
     loadRestaurants,
+    loadingStatus,
   };
 };
 
