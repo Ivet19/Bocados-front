@@ -9,10 +9,9 @@ interface RestaurantsListProps {
 const RestaurantsList: React.FC<RestaurantsListProps> = ({ restaurants }) => {
   return (
     <ul className="restaurants">
-      {restaurants.map((restaurant) => (
+      {restaurants.map((restaurant, position) => (
         <li key={restaurant.id}>
-          {" "}
-          <RestaurantCard restaurant={restaurant} />
+          <RestaurantCard restaurant={restaurant} position={position} />
         </li>
       ))}
     </ul>
