@@ -11,6 +11,17 @@ export const jackRabbitSlimsDto: RestaurantDto = {
   isVisited: false,
 };
 
+export const visitedJackRabbitSlimsDto: RestaurantDto = {
+  _id: "662a1c9d7f8b9f001a1b0011",
+  name: "Jack Rabbit Slim's",
+  adress: "Los Angeles, CA",
+  foodType: "Americana retro",
+  imageUrl: "https://i.ibb.co/CKXW0vf/jack-rabbit.jpg",
+  description:
+    "El restaurante de temática cincuentera que aparece en 'Pulp Fiction', donde Vincent Vega y Mia Wallace comparten una famosa escena de baile. Ambientado con camareros disfrazados de íconos de los años 50 y decorado con coches clásicos como mesas. Sirve hamburguesas, batidos caros y rock and roll como acompañamiento.",
+  isVisited: true,
+};
+
 export const gusteausDto: RestaurantDto = {
   _id: "662a1c9d7f8b9f001a1b0012",
   name: "Gusteau's",
