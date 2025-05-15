@@ -2,17 +2,18 @@ import { useCallback, useMemo } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import RestaurantsClient from "../client/RestaurantClient";
 import {
-  isLoading,
+  isDataLoading,
   loadRestaurantsActionCreator,
+  updateRestaurantActionCreator,
 } from "../slice/restaurantSlice";
 
 const useRestaurants = () => {
   const restaurantsData = useAppSelector(
-    (state) => state.restaurantsReducer.restaurantsData,
+    (state) => state.restaurantStateData.restaurantsData,
   );
 
   const loadingStatus = useAppSelector(
-    (state) => state.restaurantsReducer.status,
+    (state) => state.restaurantStateData.isLoading,
   );
 
   const dispatch = useAppDispatch();
@@ -22,7 +23,7 @@ const useRestaurants = () => {
   const loadRestaurants = useCallback(
     async (pageNumber?: number): Promise<void> => {
       const timeout = setTimeout(() => {
-        dispatch(isLoading());
+        dispatch(isDataLoading());
       }, 500);
 
       const restaurantsData = await restaurantClient.getRestaurants(pageNumber);
@@ -36,10 +37,23 @@ const useRestaurants = () => {
     [restaurantClient, dispatch],
   );
 
+  const updateRestaurant = useCallback(
+    async (restaurantId: string): Promise<void> => {
+      const restaurant =
+        await restaurantClient.toggleRestaurantById(restaurantId);
+
+      const action = updateRestaurantActionCreator(restaurant);
+
+      dispatch(action);
+    },
+    [restaurantClient, dispatch],
+  );
+
   return {
     restaurantsData,
     loadRestaurants,
     loadingStatus,
+    updateRestaurant,
   };
 };
 
