@@ -4,15 +4,16 @@ import RestaurantsClient from "../client/RestaurantClient";
 import {
   isDataLoading,
   loadRestaurantsActionCreator,
+  updateRestaurantActionCreator,
 } from "../slice/restaurantSlice";
 
 const useRestaurants = () => {
   const restaurantsData = useAppSelector(
-    (state) => state.restaurantsReducer.restaurantsData,
+    (state) => state.restaurantStateData.restaurantsData,
   );
 
   const loadingStatus = useAppSelector(
-    (state) => state.restaurantsReducer.isLoading,
+    (state) => state.restaurantStateData.isLoading,
   );
 
   const dispatch = useAppDispatch();
@@ -36,10 +37,23 @@ const useRestaurants = () => {
     [restaurantClient, dispatch],
   );
 
+  const updateRestaurant = useCallback(
+    async (restaurantId: string): Promise<void> => {
+      const restaurant =
+        await restaurantClient.toggleRestaurantById(restaurantId);
+
+      const action = updateRestaurantActionCreator(restaurant);
+
+      dispatch(action);
+    },
+    [restaurantClient, dispatch],
+  );
+
   return {
     restaurantsData,
     loadRestaurants,
     loadingStatus,
+    updateRestaurant,
   };
 };
 

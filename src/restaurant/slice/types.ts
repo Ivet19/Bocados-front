@@ -4,3 +4,5 @@ export type RestaurantState = {
   restaurantsData: RestaurantsData;
   isLoading: boolean;
 };
+
+export type RestaurantPreloadedState = { restaurantStateData: RestaurantState };
