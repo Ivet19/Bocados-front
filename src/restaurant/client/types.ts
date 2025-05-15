@@ -3,6 +3,7 @@ import type { Restaurant } from "../types";
 
 export interface RestaurantClientStructure {
   getRestaurants: (pageNumber?: number) => Promise<RestaurantsData>;
+  toggleRestaurantById: (RestaurantId: string) => Promise<Restaurant>;
 }
 
 export interface RestaurantsDataDto {
