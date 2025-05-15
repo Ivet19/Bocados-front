@@ -1,21 +1,22 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { RestaurantsData } from "../client/types";
 import type { RestaurantState } from "./types";
+import type { Restaurant } from "../types";
 
 const initialState: RestaurantState = {
   restaurantsData: {
     restaurants: [],
     restaurantsTotal: 0,
   },
-  status: "idle",
+  isLoading: false,
 };
 
 const restaurantSlice = createSlice({
   name: "restaurants",
   initialState,
   reducers: {
-    isLoading: (currentState): void => {
-      currentState.status = "loading";
+    isDataLoading: (currentState): void => {
+      currentState.isLoading = true;
     },
 
     loadRestaurants: (
@@ -30,7 +31,23 @@ const restaurantSlice = createSlice({
           restaurants: [...restaurants],
           restaurantsTotal,
         },
-        status: "idle",
+        isLoading: false,
+      };
+    },
+
+    updateRestaurant: (
+      currentState,
+      action: PayloadAction<Restaurant>,
+    ): RestaurantState => {
+      return {
+        restaurantsData: {
+          ...currentState.restaurantsData,
+          restaurants: currentState.restaurantsData.restaurants.map(
+            (restaurant) =>
+              restaurant.id === action.payload.id ? action.payload : restaurant,
+          ),
+        },
+        isLoading: false,
       };
     },
   },
@@ -38,5 +55,8 @@ const restaurantSlice = createSlice({
 
 export const restaurantsReducer = restaurantSlice.reducer;
 
-export const { loadRestaurants: loadRestaurantsActionCreator, isLoading } =
-  restaurantSlice.actions;
+export const {
+  loadRestaurants: loadRestaurantsActionCreator,
+  isDataLoading,
+  updateRestaurant: updateRestaurantActionCreator,
+} = restaurantSlice.actions;
