@@ -25,7 +25,7 @@ const RestaurantsPage: React.FC = () => {
     loadRestaurants(pageNumber);
   }, [loadRestaurants, pageNumber]);
 
-  if (loadingStatus === "loading") {
+  if (loadingStatus === true) {
     return <Loading />;
   }
 

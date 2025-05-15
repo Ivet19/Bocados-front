@@ -7,15 +7,15 @@ const initialState: RestaurantState = {
     restaurants: [],
     restaurantsTotal: 0,
   },
-  status: "idle",
+  isLoading: false,
 };
 
 const restaurantSlice = createSlice({
   name: "restaurants",
   initialState,
   reducers: {
-    isLoading: (currentState): void => {
-      currentState.status = "loading";
+    isDataLoading: (currentState): void => {
+      currentState.isLoading = true;
     },
 
     loadRestaurants: (
@@ -30,7 +30,7 @@ const restaurantSlice = createSlice({
           restaurants: [...restaurants],
           restaurantsTotal,
         },
-        status: "idle",
+        isLoading: false,
       };
     },
   },
@@ -38,5 +38,5 @@ const restaurantSlice = createSlice({
 
 export const restaurantsReducer = restaurantSlice.reducer;
 
-export const { loadRestaurants: loadRestaurantsActionCreator, isLoading } =
+export const { loadRestaurants: loadRestaurantsActionCreator, isDataLoading } =
   restaurantSlice.actions;
