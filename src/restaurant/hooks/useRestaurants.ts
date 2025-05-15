@@ -2,7 +2,7 @@ import { useCallback, useMemo } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import RestaurantsClient from "../client/RestaurantClient";
 import {
-  isLoading,
+  isDataLoading,
   loadRestaurantsActionCreator,
 } from "../slice/restaurantSlice";
 
@@ -12,7 +12,7 @@ const useRestaurants = () => {
   );
 
   const loadingStatus = useAppSelector(
-    (state) => state.restaurantsReducer.status,
+    (state) => state.restaurantsReducer.isLoading,
   );
 
   const dispatch = useAppDispatch();
@@ -22,7 +22,7 @@ const useRestaurants = () => {
   const loadRestaurants = useCallback(
     async (pageNumber?: number): Promise<void> => {
       const timeout = setTimeout(() => {
-        dispatch(isLoading());
+        dispatch(isDataLoading());
       }, 500);
 
       const restaurantsData = await restaurantClient.getRestaurants(pageNumber);
