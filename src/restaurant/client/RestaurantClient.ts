@@ -1,4 +1,9 @@
-import { transformRestaurantsDataDtoToRestaurantsData } from "../dto/mappers";
+import {
+  mapRestaurantDtoToRestaurant,
+  transformRestaurantsDataDtoToRestaurantsData,
+} from "../dto/mappers";
+import type { RestaurantDto } from "../dto/typesDto";
+import type { Restaurant } from "../types";
 import type {
   RestaurantClientStructure,
   RestaurantsData,
@@ -27,6 +32,30 @@ class RestaurantsClient implements RestaurantClientStructure {
       transformRestaurantsDataDtoToRestaurantsData(restaurantsDataDto);
 
     return restaurantsData;
+  };
+
+  public toggleRestaurantById = async (
+    RestaurantId: string,
+  ): Promise<Restaurant> => {
+    const response = await fetch(
+      `${this.apiUrl}/restaurants/visit-restaurant/${RestaurantId}`,
+      {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+      },
+    );
+
+    if (!response.ok) {
+      throw new Error("Error updating restaurant");
+    }
+
+    const restaurantDto = (await response.json()) as {
+      restaurant: RestaurantDto;
+    };
+
+    const restaurant = mapRestaurantDtoToRestaurant(restaurantDto.restaurant);
+
+    return restaurant;
   };
 }
 
