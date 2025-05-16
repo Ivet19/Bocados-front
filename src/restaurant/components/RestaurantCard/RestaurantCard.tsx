@@ -1,3 +1,5 @@
+import Button from "../../../components/Button/Button";
+import useRestaurants from "../../hooks/useRestaurants";
 import type { Restaurant } from "../../types";
 import "./RestaurantCard.css";
 
@@ -7,7 +9,16 @@ interface RestaurantCardProps {
 }
 
 const RestaurantCard: React.FC<RestaurantCardProps> = ({
-  restaurant: { name, adress, foodType, imageUrl, imageAlt, isVisited, rating },
+  restaurant: {
+    id,
+    name,
+    adress,
+    foodType,
+    imageUrl,
+    imageAlt,
+    isVisited,
+    rating,
+  },
   position,
 }) => {
   const loadingType = position <= 1 ? "eager" : "lazy";
@@ -18,16 +29,23 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
 
   const checkIconColor = isVisited ? "green" : "grey";
 
+  const { updateRestaurant } = useRestaurants();
+
   return (
     <article className="restaurant">
       <div className="restaurant__top-info">
         <h3 className="restaurant__name">{name}</h3>
-        <img
-          src={checkIcon}
-          alt={`${checkIconColor} check icon`}
-          width={35}
-          height={35}
-        />
+        <Button
+          action={() => updateRestaurant(id)}
+          classModifierName="visit-state"
+        >
+          <img
+            src={checkIcon}
+            alt={`${checkIconColor} check icon`}
+            width={35}
+            height={35}
+          />
+        </Button>
       </div>
       <img
         className="restaurant__image"

@@ -2,7 +2,7 @@ import { Provider } from "react-redux";
 import { render, screen } from "@testing-library/react";
 import store from "../../../store/store";
 import RestaurantCard from "./RestaurantCard";
-import { moesTavern } from "../../fixtures";
+import { jackRabbitSlims, moesTavern } from "../../fixtures";
 
 describe("Given the RestaurantCard component", () => {
   describe("When it receives Moe's Tavern restaurant", () => {
@@ -44,6 +44,33 @@ describe("Given the RestaurantCard component", () => {
       const restaurantFoodType = screen.getByText(moesTavern.foodType);
 
       expect(restaurantFoodType).toBeVisible();
+    });
+    describe("And it's visited", () => {
+      test("Then it should show a green check button", () => {
+        render(
+          <Provider store={store}>
+            <RestaurantCard restaurant={moesTavern} position={0} />
+          </Provider>,
+        );
+
+        const checkButton = screen.getByAltText(/green check icon/i);
+
+        expect(checkButton).toBeInTheDocument();
+      });
+    });
+  });
+
+  describe("When it receives not visited Jack Rabbit Slim's restaurant", () => {
+    test("Then it should show a grey check button", () => {
+      render(
+        <Provider store={store}>
+          <RestaurantCard restaurant={jackRabbitSlims} position={0} />
+        </Provider>,
+      );
+
+      const checkButton = screen.getByAltText(/grey check icon/i);
+
+      expect(checkButton).toBeInTheDocument();
     });
   });
 });
