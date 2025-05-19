@@ -2,10 +2,12 @@ import { useCallback, useMemo } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import RestaurantsClient from "../client/RestaurantClient";
 import {
+  createRestaurantActionCreator,
   isDataLoading,
   loadRestaurantsActionCreator,
   updateRestaurantActionCreator,
 } from "../slice/restaurantSlice";
+import type { RestaurantData } from "../types";
 
 const useRestaurants = () => {
   const restaurantsData = useAppSelector(
@@ -49,11 +51,22 @@ const useRestaurants = () => {
     [restaurantClient, dispatch],
   );
 
+  const createRestaurant = async (
+    restaurantData: RestaurantData,
+  ): Promise<void> => {
+    const newRestaurant = await restaurantClient.addRestaurant(restaurantData);
+
+    const action = createRestaurantActionCreator({ newRestaurant });
+
+    dispatch(action);
+  };
+
   return {
     restaurantsData,
     loadRestaurants,
     loadingStatus,
     updateRestaurant,
+    createRestaurant,
   };
 };
 
