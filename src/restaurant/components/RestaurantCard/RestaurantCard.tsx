@@ -38,6 +38,7 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
         <Button
           action={() => updateRestaurant(id)}
           classModifierName="visit-state"
+          isDisabled={false}
         >
           <img
             src={checkIcon}

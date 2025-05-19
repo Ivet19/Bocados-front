@@ -1,3 +1,14 @@
 .button--visit-state {
   height: 35px;
 }
+
+.button--form {
+  font-size: 1.5rem;
+  align-self: flex-end;
+  padding: 8px 35px;
+  border-radius: 5px;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  font-weight: 400;
+  filter: drop-shadow(0px 4px 4px #00000040);
+}

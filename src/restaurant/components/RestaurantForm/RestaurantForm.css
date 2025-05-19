@@ -1,0 +1,73 @@
+.restaurant-form {
+  background-color: var(--secondary-color);
+  border-radius: 8px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  color: var(--primary-color);
+}
+
+.restaurant-form__info {
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+
+.restaurant-form__info--optionals {
+  text-decoration: underline;
+}
+
+.restaurant-form__groups {
+  display: flex;
+  flex-direction: column;
+  gap: 38px;
+  font-size: 1.5rem;
+}
+
+.restaurant-form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.restaurant-form__group--checkbox {
+  align-self: center;
+  display: flex;
+  align-items: center;
+}
+
+.restaurant-form__control {
+  font-family: "Beiruti Variable", sans-serif;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  height: 45px;
+  padding: 8px 14px;
+  background-color: #b5b8ab;
+  border: 1px solid var(--primary-color);
+}
+
+.post-form__checkbox {
+  background-color: #b5b8ab;
+  border: 1px solid var(--primary-color);
+  height: 25px;
+  width: 25px;
+}
+
+.restaurant-form__control--text-area {
+  height: 110px;
+}
+
+.restaurant-form__rating-control {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  width: 50%;
+}
+
+.restaurant-form__control--rating {
+  width: 50%;
+}
+
+.max-rating {
+  font-size: 2.813rem;
+}

@@ -5,7 +5,10 @@ const Navigation: React.FC = () => {
   return (
     <nav className="navigation">
       <NavLink className="navigation__link" to="/restaurants">
-        Restaurants
+        Restaurantes
+      </NavLink>
+      <NavLink className="navigation__link" to="/add-restaurant">
+        Añadir restaurante
       </NavLink>
     </nav>
   );
