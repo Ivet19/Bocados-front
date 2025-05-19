@@ -6,12 +6,12 @@ export interface RestaurantDto {
   imageUrl: string;
   description: string;
   isVisited: boolean;
+  visitDate?: string;
   servingsAmount?: ServingsAmmount;
   waitTime?: WaitTime;
   customerService?: CustomerService;
   priceCategory?: PriceCategory;
   rating?: number;
-  visitDate?: string;
 }
 
 export type ServingsAmmount = "Poca" | "Normal" | "Generosa";

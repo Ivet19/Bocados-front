@@ -3,8 +3,9 @@ import {
   transformRestaurantsDataDtoToRestaurantsData,
 } from "../dto/mappers";
 import type { RestaurantDto } from "../dto/typesDto";
-import type { Restaurant } from "../types";
+import type { Restaurant, RestaurantData } from "../types";
 import type {
+  ResponseRestaurantDto,
   RestaurantClientStructure,
   RestaurantsData,
   RestaurantsDataDto,
@@ -56,6 +57,27 @@ class RestaurantsClient implements RestaurantClientStructure {
     const restaurant = mapRestaurantDtoToRestaurant(restaurantDto.restaurant);
 
     return restaurant;
+  };
+
+  public addRestaurant = async (
+    restaurantData: RestaurantData,
+  ): Promise<Restaurant> => {
+    const response = await fetch(`${this.apiUrl}/restaurants`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(restaurantData),
+    });
+
+    if (!response.ok) {
+      throw new Error("Error adding the new restaurant");
+    }
+
+    const { restaurant: restaurantDto } =
+      (await response.json()) as ResponseRestaurantDto;
+
+    const newRestaurant = mapRestaurantDtoToRestaurant(restaurantDto);
+
+    return newRestaurant;
   };
 }
 

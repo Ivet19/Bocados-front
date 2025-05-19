@@ -16,3 +16,5 @@ export type Restaurant = Omit<RestaurantDto, "_id" | "visitDate"> & {
   rating?: number;
   visitDate?: string;
 };
+
+export type RestaurantData = Omit<RestaurantDto, "_id">;

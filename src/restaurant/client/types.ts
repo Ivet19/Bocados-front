@@ -14,3 +14,7 @@ export interface RestaurantsDataDto {
 export type RestaurantsData = Omit<RestaurantsDataDto, "restaurants"> & {
   restaurants: Restaurant[];
 };
+
+export type ResponseRestaurantDto = {
+  restaurant: RestaurantDto;
+};

@@ -50,13 +50,29 @@ const restaurantSlice = createSlice({
         isLoading: false,
       };
     },
+
+    createRestaurant: (
+      { restaurantsData: { restaurants, restaurantsTotal } },
+      {
+        payload: { newRestaurant },
+      }: PayloadAction<{ newRestaurant: Restaurant }>,
+    ): RestaurantState => {
+      return {
+        restaurantsData: {
+          restaurants: [...restaurants, newRestaurant],
+          restaurantsTotal: restaurantsTotal + 1,
+        },
+        isLoading: false,
+      };
+    },
   },
 });
 
 export const restaurantsReducer = restaurantSlice.reducer;
 
 export const {
-  loadRestaurants: loadRestaurantsActionCreator,
   isDataLoading,
+  loadRestaurants: loadRestaurantsActionCreator,
   updateRestaurant: updateRestaurantActionCreator,
+  createRestaurant: createRestaurantActionCreator,
 } = restaurantSlice.actions;
