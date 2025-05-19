@@ -22,14 +22,19 @@ describe("Given the Layout component", () => {
       expect(appTitle).toBeInTheDocument();
     });
 
-    test("Then it should show a 'Restaurants' link", () => {
+    test("Then it should show a 'Restaurantes' and 'Añadir restaurante' links", () => {
       render(<Layout />, { wrapper: MemoryRouter });
 
       const restaurantsLink = screen.getByRole("link", {
-        name: /restaurants/i,
+        name: /restaurantes/i,
+      });
+
+      const addRestaurantLink = screen.getByRole("link", {
+        name: /añadir restaurante/i,
       });
 
       expect(restaurantsLink).toBeVisible();
+      expect(addRestaurantLink).toBeVisible();
     });
   });
 

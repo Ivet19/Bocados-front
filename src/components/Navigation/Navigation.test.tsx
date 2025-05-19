@@ -4,14 +4,24 @@ import Navigation from "./Navigation";
 
 describe("Given the Navigation component", () => {
   describe("When it renders", () => {
-    test("Then it should show a 'Restaurants' link", () => {
+    test("Then it should show a 'Restaurantes' link", () => {
       render(<Navigation />, { wrapper: MemoryRouter });
 
       const restaurantsLink = screen.getByRole("link", {
-        name: /restaurants/i,
+        name: /restaurantes/i,
       });
 
       expect(restaurantsLink).toBeVisible();
+    });
+
+    test("Then it should show an 'Añadir restaurante' link", () => {
+      render(<Navigation />, { wrapper: MemoryRouter });
+
+      const addRestaurantLink = screen.getByRole("link", {
+        name: /añadir restaurante/i,
+      });
+
+      expect(addRestaurantLink).toBeVisible();
     });
   });
 });
