@@ -4,12 +4,14 @@ import "./Button.css";
 type AllButtonProps = ComponentProps<"button">;
 
 interface ButtonProps extends AllButtonProps {
+  isDisabled: boolean;
   classModifierName: string;
   action: () => void;
 }
 
 const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
   classModifierName,
+  isDisabled,
   children,
   action,
   ...button
@@ -19,6 +21,7 @@ const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
       type="button"
       className={`button button--${classModifierName}`}
       onClick={action}
+      disabled={isDisabled}
       {...button}
     >
       {children}

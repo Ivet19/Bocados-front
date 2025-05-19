@@ -8,7 +8,7 @@ describe("Given the Button component", () => {
   describe("When it receives 'Play' and an action", () => {
     test("Then it should show a 'Play' button", () => {
       render(
-        <Button action={() => {}} classModifierName="start">
+        <Button action={() => {}} classModifierName="start" isDisabled={false}>
           Play
         </Button>,
       );
@@ -25,7 +25,11 @@ describe("Given the Button component", () => {
         const action = vitest.fn();
 
         render(
-          <Button action={() => action()} classModifierName="start">
+          <Button
+            action={() => action()}
+            classModifierName="start"
+            isDisabled={false}
+          >
             Play
           </Button>,
         );
