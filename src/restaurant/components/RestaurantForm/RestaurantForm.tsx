@@ -51,6 +51,28 @@ const RestaurantForm: React.FC<RestaurantFormProps> = ({ action }) => {
     }));
   };
 
+  const changeRating = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+
+    if (value === "") {
+      setRestaurantData((restaurantData) => ({ ...restaurantData, rating: 0 }));
+      return;
+    }
+
+    let parsedRating = parseFloat(value);
+
+    if (isNaN(parsedRating)) return;
+
+    if (parsedRating > 5) parsedRating = 5;
+
+    parsedRating = Math.round(parsedRating * 10) / 10;
+
+    setRestaurantData((restaurantData) => ({
+      ...restaurantData,
+      rating: parsedRating,
+    }));
+  };
+
   const isFormValid =
     restaurantData.name !== "" &&
     restaurantData.adress !== "" &&
@@ -219,7 +241,7 @@ const RestaurantForm: React.FC<RestaurantFormProps> = ({ action }) => {
             <option value="Malo">Malo</option>
             <option value="Regular">Regular</option>
             <option value="Bueno">Bueno</option>
-            <option value="mMy bueno">Muy bueno</option>
+            <option value="Muy bueno">Muy bueno</option>
           </select>
         </div>
         <div className="restaurant-form__group">
@@ -252,7 +274,7 @@ const RestaurantForm: React.FC<RestaurantFormProps> = ({ action }) => {
               id="rating"
               className="restaurant-form__control restaurant-form__control--rating"
               value={restaurantData.rating}
-              onChange={changeRestaurantData}
+              onChange={changeRating}
               disabled={!isVisited}
             />
             <span className="max-rating">/5</span>
