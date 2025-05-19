@@ -6,7 +6,7 @@ import {
   moviesRestaurantsSecondPageDto,
   visitedJackRabbitSlimsDto,
 } from "../dto/fixturesDto";
-import { jackRabbitSlims } from "../fixtures";
+import { jackRabbitSlims, threeBroomsticksDto } from "../fixtures";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -46,4 +46,10 @@ export const handlers = [
       });
     },
   ),
+
+  http.post(`${apiUrl}/restaurants`, () => {
+    return HttpResponse.json<{ restaurant: RestaurantDto }>({
+      restaurant: threeBroomsticksDto,
+    });
+  }),
 ];
