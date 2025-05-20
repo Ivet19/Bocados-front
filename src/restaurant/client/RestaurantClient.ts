@@ -11,7 +11,7 @@ import type {
   RestaurantsDataDto,
 } from "./types";
 
-class RestaurantsClient implements RestaurantClientStructure {
+class RestaurantClient implements RestaurantClientStructure {
   private readonly apiUrl = import.meta.env.VITE_API_URL;
 
   public getRestaurants = async (
@@ -79,6 +79,29 @@ class RestaurantsClient implements RestaurantClientStructure {
 
     return newRestaurant;
   };
+
+  public deleteRestaurant = async (
+    restaurantId: string,
+  ): Promise<Restaurant> => {
+    const response = await fetch(`${this.apiUrl}/restaurants/${restaurantId}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (!response.ok) {
+      throw new Error("Error deleting restaurant");
+    }
+
+    const deletedRestaurantDto = (await response.json()) as {
+      restaurant: RestaurantDto;
+    };
+
+    const deletedRestaurant = mapRestaurantDtoToRestaurant(
+      deletedRestaurantDto.restaurant,
+    );
+
+    return deletedRestaurant;
+  };
 }
 
-export default RestaurantsClient;
+export default RestaurantClient;

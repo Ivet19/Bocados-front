@@ -52,4 +52,10 @@ export const handlers = [
       restaurant: threeBroomsticksDto,
     });
   }),
+
+  http.delete(`${apiUrl}/restaurants/${threeBroomsticksDto._id}`, () => {
+    return HttpResponse.json<{ restaurant: RestaurantDto }>({
+      restaurant: threeBroomsticksDto,
+    });
+  }),
 ];
