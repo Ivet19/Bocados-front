@@ -4,6 +4,7 @@ import {
   moviesRestaurantsDto,
   moviesRestaurantsFirstPageDto,
   moviesRestaurantsSecondPageDto,
+  pizzaPlanetDto,
   visitedJackRabbitSlimsDto,
 } from "../dto/fixturesDto";
 import { jackRabbitSlims, threeBroomsticksDto } from "../fixtures";
@@ -56,6 +57,12 @@ export const handlers = [
   http.delete(`${apiUrl}/restaurants/${threeBroomsticksDto._id}`, () => {
     return HttpResponse.json<{ restaurant: RestaurantDto }>({
       restaurant: threeBroomsticksDto,
+    });
+  }),
+
+  http.delete(`${apiUrl}/restaurants/${pizzaPlanetDto._id}`, () => {
+    return HttpResponse.json<{ restaurant: RestaurantDto }>({
+      restaurant: pizzaPlanetDto,
     });
   }),
 ];

@@ -43,7 +43,7 @@ const RestaurantForm: React.FC<RestaurantFormProps> = ({ action }) => {
   };
 
   const changeIsVisited = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = event.target.checked as boolean;
+    const newValue = event.target.checked;
 
     setRestaurantData((restaurantData) => ({
       ...restaurantData,
