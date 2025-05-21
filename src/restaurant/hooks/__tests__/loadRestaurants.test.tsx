@@ -18,7 +18,6 @@ describe("Given the loadRestaurants function", () => {
             restaurants: [moesTavern],
             restaurantsTotal: 6,
           },
-          isLoading: false,
         },
       };
 

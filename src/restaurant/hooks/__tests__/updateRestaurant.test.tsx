@@ -15,7 +15,6 @@ describe("Given the updateRestaurantById function", () => {
             restaurants: [jackRabbitSlims],
             restaurantsTotal: 1,
           },
-          isLoading: false,
         },
       };
 

@@ -18,7 +18,6 @@ describe("Given the removeRestaurant function", () => {
             restaurants: [pizzaPlanet],
             restaurantsTotal: 6,
           },
-          isLoading: false,
         },
       };
 
