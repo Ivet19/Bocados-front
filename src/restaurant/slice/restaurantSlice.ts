@@ -8,16 +8,12 @@ const initialState: RestaurantState = {
     restaurants: [],
     restaurantsTotal: 0,
   },
-  isLoading: false,
 };
 
 const restaurantSlice = createSlice({
   name: "restaurants",
   initialState,
   reducers: {
-    isDataLoading: (currentState): void => {
-      currentState.isLoading = true;
-    },
     loadRestaurants: (
       currentState,
       {
@@ -30,7 +26,6 @@ const restaurantSlice = createSlice({
           restaurants: [...restaurants],
           restaurantsTotal,
         },
-        isLoading: false,
       };
     },
     updateRestaurant: (
@@ -45,7 +40,6 @@ const restaurantSlice = createSlice({
               restaurant.id === action.payload.id ? action.payload : restaurant,
           ),
         },
-        isLoading: false,
       };
     },
     createRestaurant: (
@@ -59,7 +53,6 @@ const restaurantSlice = createSlice({
           restaurants: [...restaurants, newRestaurant],
           restaurantsTotal: restaurantsTotal + 1,
         },
-        isLoading: false,
       };
     },
     removeRestaurant: (
@@ -75,7 +68,6 @@ const restaurantSlice = createSlice({
           restaurants: restaurants.filter((restaurant) => restaurant.id !== id),
           restaurantsTotal: restaurantsTotal - 1,
         },
-        isLoading: false,
       };
     },
   },
@@ -84,7 +76,6 @@ const restaurantSlice = createSlice({
 export const restaurantsReducer = restaurantSlice.reducer;
 
 export const {
-  isDataLoading,
   loadRestaurants: loadRestaurantsActionCreator,
   updateRestaurant: updateRestaurantActionCreator,
   createRestaurant: createRestaurantActionCreator,

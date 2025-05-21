@@ -1,14 +1,18 @@
 import { render, screen } from "@testing-library/react";
 import AppRouter from "./AppRouter";
 import { MemoryRouter } from "react-router";
+import { Provider } from "react-redux";
+import store from "../../store/store";
 
 describe("Given the AppRouter component", () => {
   describe("When it renders in path /patatas", () => {
     test("Then it should show an '¡Error 404!' and a 'No se ha encontrado la página que buscas' inside a heading", () => {
       render(
-        <MemoryRouter initialEntries={["/mangas"]}>
-          <AppRouter />,
-        </MemoryRouter>,
+        <Provider store={store}>
+          <MemoryRouter initialEntries={["/patatas"]}>
+            <AppRouter />
+          </MemoryRouter>
+        </Provider>,
       );
 
       const expectedPageTitle = screen.getByRole("heading", {
@@ -25,9 +29,11 @@ describe("Given the AppRouter component", () => {
 
     test("Then it should show a image of an exclamation symbol icon", () => {
       render(
-        <MemoryRouter initialEntries={["/mangas"]}>
-          <AppRouter />,
-        </MemoryRouter>,
+        <Provider store={store}>
+          <MemoryRouter initialEntries={["/patatas"]}>
+            <AppRouter />
+          </MemoryRouter>
+        </Provider>,
       );
 
       const icon = screen.getByAltText(/exclamation symbol icon/i);
