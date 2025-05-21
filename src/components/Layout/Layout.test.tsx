@@ -12,7 +12,14 @@ describe("Given the Layout component", () => {
     test("Then it should show 'BOCADOS' inside a level 1 heading", () => {
       const expectedTitle = /bocados/i;
 
-      render(<Layout />, { wrapper: MemoryRouter });
+      render(
+        <Provider store={store}>
+          <MemoryRouter initialEntries={["/"]}>
+            <Layout />
+            <AppTestRouter />
+          </MemoryRouter>
+        </Provider>,
+      );
 
       const appTitle = screen.getByRole("heading", {
         name: expectedTitle,
@@ -23,7 +30,14 @@ describe("Given the Layout component", () => {
     });
 
     test("Then it should show a 'Restaurantes' and 'Añadir restaurante' links", () => {
-      render(<Layout />, { wrapper: MemoryRouter });
+      render(
+        <Provider store={store}>
+          <MemoryRouter initialEntries={["/"]}>
+            <Layout />
+            <AppTestRouter />
+          </MemoryRouter>
+        </Provider>,
+      );
 
       const restaurantsLink = screen.getByRole("link", {
         name: /restaurantes/i,
