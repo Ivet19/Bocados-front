@@ -3,14 +3,12 @@ import { useSearchParams } from "react-router";
 import useRestaurants from "../../hooks/useRestaurants";
 import Pagination from "../../../components/Pagination/Pagination";
 import RestaurantsList from "../../components/RestaurantsList/RestaurantsList";
-import Loading from "../../../components/Loading/Loading";
 import "./RestaurantsPage.css";
 
 const RestaurantsPage: React.FC = () => {
   const {
     loadRestaurants,
     restaurantsData: { restaurants, restaurantsTotal },
-    loadingStatus,
   } = useRestaurants();
 
   const [urlSearchParams] = useSearchParams();
@@ -24,10 +22,6 @@ const RestaurantsPage: React.FC = () => {
 
     loadRestaurants(pageNumber);
   }, [loadRestaurants, pageNumber]);
-
-  if (loadingStatus === true) {
-    return <Loading />;
-  }
 
   return (
     <>
