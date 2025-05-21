@@ -4,7 +4,6 @@ import RestaurantsClient from "../client/RestaurantClient";
 import {
   createRestaurantActionCreator,
   deleteRestaurantActionCreator,
-  isDataLoading,
   loadRestaurantsActionCreator,
   updateRestaurantActionCreator,
 } from "../slice/restaurantSlice";
@@ -15,23 +14,13 @@ const useRestaurants = () => {
     (state) => state.restaurantStateData.restaurantsData,
   );
 
-  const loadingStatus = useAppSelector(
-    (state) => state.restaurantStateData.isLoading,
-  );
-
   const dispatch = useAppDispatch();
 
   const restaurantClient = useMemo(() => new RestaurantsClient(), []);
 
   const loadRestaurants = useCallback(
     async (pageNumber?: number): Promise<void> => {
-      const timeout = setTimeout(() => {
-        dispatch(isDataLoading());
-      }, 500);
-
       const restaurantsData = await restaurantClient.getRestaurants(pageNumber);
-
-      clearTimeout(timeout);
 
       const action = loadRestaurantsActionCreator(restaurantsData);
 
@@ -74,7 +63,6 @@ const useRestaurants = () => {
   return {
     restaurantsData,
     loadRestaurants,
-    loadingStatus,
     updateRestaurant,
     createRestaurant,
     removeRestaurant,
