@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import RestaurantsClient from "../client/RestaurantClient";
 import {
   createRestaurantActionCreator,
+  deleteRestaurantActionCreator,
   isDataLoading,
   loadRestaurantsActionCreator,
   updateRestaurantActionCreator,
@@ -61,12 +62,22 @@ const useRestaurants = () => {
     dispatch(action);
   };
 
+  const removeRestaurant = async (restaurantId: string): Promise<void> => {
+    const deletedRestaurant =
+      await restaurantClient.deleteRestaurant(restaurantId);
+
+    const action = deleteRestaurantActionCreator({ deletedRestaurant });
+
+    dispatch(action);
+  };
+
   return {
     restaurantsData,
     loadRestaurants,
     loadingStatus,
     updateRestaurant,
     createRestaurant,
+    removeRestaurant,
   };
 };
 
