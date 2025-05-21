@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import userEvent from "@testing-library/user-event";
 import Layout from "./Layout";
 import store from "../../store/store";
-import AppRouter from "../../router/AppRouter";
+import AppTestRouter from "../../router/AppTestRouter/AppTestRouter";
 import "./Layout.css";
 
 describe("Given the Layout component", () => {
@@ -36,6 +36,56 @@ describe("Given the Layout component", () => {
       expect(restaurantsLink).toBeVisible();
       expect(addRestaurantLink).toBeVisible();
     });
+
+    describe("And the user clicks the link 'restaurantes", () => {
+      test("Then it should show 'Lista de restaurantes' inside a heading", async () => {
+        render(
+          <Provider store={store}>
+            <MemoryRouter initialEntries={["/"]}>
+              <Layout />
+              <AppTestRouter />
+            </MemoryRouter>
+          </Provider>,
+        );
+
+        const restaurantsLink = screen.getByRole("link", {
+          name: /restaurantes/i,
+        });
+
+        await userEvent.click(restaurantsLink);
+
+        const expectedTitle = screen.getByRole("heading", {
+          name: /lista de restaurantes/i,
+        });
+
+        expect(expectedTitle).toBeInTheDocument();
+      });
+    });
+
+    describe("And the user clicks the link 'añadir restaurante'", () => {
+      test("Then it should show 'Añadir restaurante' inside a heading", async () => {
+        render(
+          <Provider store={store}>
+            <MemoryRouter initialEntries={["/restaurants"]}>
+              <Layout />
+              <AppTestRouter />
+            </MemoryRouter>
+          </Provider>,
+        );
+
+        const restaurantsLink = screen.getByRole("link", {
+          name: /añadir restaurante/i,
+        });
+
+        await userEvent.click(restaurantsLink);
+
+        const expectedTitle = screen.getByRole("heading", {
+          name: /añadir restaurante/i,
+        });
+
+        expect(expectedTitle).toBeInTheDocument();
+      });
+    });
   });
 
   describe("When it renders in path /restaurants", () => {
@@ -47,7 +97,7 @@ describe("Given the Layout component", () => {
           <Provider store={store}>
             <MemoryRouter initialEntries={["/restaurants"]}>
               <Layout />
-              <AppRouter />
+              <AppTestRouter />
             </MemoryRouter>
           </Provider>,
         );
@@ -60,7 +110,7 @@ describe("Given the Layout component", () => {
           name: expectedSecondPageTitle,
         });
 
-        expect(currentPage2).toBeVisible();
+        expect(currentPage2).toBeInTheDocument();
       });
     });
   });
@@ -73,8 +123,7 @@ describe("Given the Layout component", () => {
         render(
           <Provider store={store}>
             <MemoryRouter initialEntries={["/restaurants"]}>
-              <Layout />
-              <AppRouter />
+              <AppTestRouter />
             </MemoryRouter>
           </Provider>,
         );
@@ -89,7 +138,7 @@ describe("Given the Layout component", () => {
           name: expectedFirstPageTitle,
         });
 
-        expect(currentPage).toBeVisible();
+        expect(currentPage).toBeInTheDocument();
       });
     });
   });

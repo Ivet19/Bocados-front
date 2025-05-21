@@ -38,6 +38,10 @@
   gap: 5px;
 }
 
+.restaurant__info--empty {
+  height: 24px;
+}
+
 .restaurant__top-info,
 .restaurant__bottom-info {
   padding: 0px 22px;
@@ -45,9 +49,30 @@
 
 .restaurant__bottom-info {
   display: flex;
+  justify-content: space-between;
+  height: auto;
+}
+
+.restaurant__info-container {
+  display: flex;
   flex-direction: column;
-  height: 100%;
   justify-content: flex-start;
   gap: 12px;
   font-size: 1.25rem;
+  height: auto;
+}
+
+.restaurant__button-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.button--delete {
+  display: flex;
+  align-items: center;
+  padding: 4px 3px;
+  border-radius: 2px;
+  background-color: var(--primary-color);
+  filter: drop-shadow(0px 4px 4px #00000040);
 }

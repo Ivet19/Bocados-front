@@ -1,10 +1,10 @@
 import { act, renderHook } from "@testing-library/react";
+import { Provider } from "react-redux";
 import useRestaurants from "../useRestaurants";
 import { pizzaPlanet } from "../../fixtures";
 import type { RestaurantState } from "../../slice/types";
 import { pizzaPlanetDto } from "../../dto/fixturesDto";
 import setupStore from "../../../store/setUpStore";
-import { Provider } from "react-redux";
 
 describe("Given the removeRestaurant function", () => {
   describe("When it's called with Pizza Planet restaurant id", () => {

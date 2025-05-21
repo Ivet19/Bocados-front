@@ -1,6 +1,7 @@
 import { http, HttpResponse } from "msw";
 import type { RestaurantDto } from "../dto/typesDto";
 import {
+  jackRabbitSlimsDto,
   moviesRestaurantsDto,
   moviesRestaurantsFirstPageDto,
   moviesRestaurantsSecondPageDto,
@@ -63,6 +64,12 @@ export const handlers = [
   http.delete(`${apiUrl}/restaurants/${pizzaPlanetDto._id}`, () => {
     return HttpResponse.json<{ restaurant: RestaurantDto }>({
       restaurant: pizzaPlanetDto,
+    });
+  }),
+
+  http.delete(`${apiUrl}/restaurants/${jackRabbitSlimsDto._id}`, () => {
+    return HttpResponse.json<{ restaurant: RestaurantDto }>({
+      restaurant: jackRabbitSlimsDto,
     });
   }),
 ];

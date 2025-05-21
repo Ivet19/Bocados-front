@@ -45,6 +45,19 @@ describe("Given the RestaurantCard component", () => {
 
       expect(restaurantFoodType).toBeVisible();
     });
+
+    test("Then it should show a delete button with a trash icon", () => {
+      render(
+        <Provider store={store}>
+          <RestaurantCard restaurant={moesTavern} position={0} />
+        </Provider>,
+      );
+
+      const deleteButton = screen.getByLabelText(/borrar restaurante/i);
+
+      expect(deleteButton).toBeVisible();
+    });
+
     describe("And it's visited", () => {
       test("Then it should show a green check button", () => {
         render(

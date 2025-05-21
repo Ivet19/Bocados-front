@@ -29,7 +29,11 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
 
   const checkIconColor = isVisited ? "green" : "grey";
 
-  const { updateRestaurant } = useRestaurants();
+  const toggleButtonAriaLabel = isVisited
+    ? "mark as not visited"
+    : "mark as visited";
+
+  const { updateRestaurant, removeRestaurant } = useRestaurants();
 
   return (
     <article className="restaurant">
@@ -39,6 +43,7 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
           action={() => updateRestaurant(id)}
           classModifierName="visit-state"
           isDisabled={false}
+          aria-label={toggleButtonAriaLabel}
         >
           <img
             src={checkIcon}
@@ -57,38 +62,55 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
         loading={loadingType}
       />
       <div className="restaurant__bottom-info">
-        <div className="restaurant__info">
-          <img
-            className="restaurant__location-icon"
-            src="/icons/Location-icon.svg"
-            alt="location map icon"
-            width={20}
-            height={20}
-          />
-          <span>{adress}</span>
-        </div>
-        <div className="restaurant__info">
-          <img
-            className="restaurant__food-icon"
-            src="/icons/Food-icon.svg"
-            alt="crossed knife and spoon icon"
-            width={20}
-            height={20}
-          />
-          <span>{foodType}</span>
-        </div>
-        {rating && (
+        <div className="restaurant__info-container">
           <div className="restaurant__info">
             <img
-              className="restaurant__star-icon"
-              src="/icons/Star-icon.svg"
-              alt="gold star icon"
+              className="restaurant__location-icon"
+              src="/icons/Location-icon.svg"
+              alt="location map icon"
               width={20}
               height={20}
             />
-            <span>{`${rating}/5`}</span>
+            <span>{adress}</span>
           </div>
-        )}
+          <div className="restaurant__info">
+            <img
+              className="restaurant__food-icon"
+              src="/icons/Food-icon.svg"
+              alt="crossed knife and spoon icon"
+              width={20}
+              height={20}
+            />
+            <span>{foodType}</span>
+          </div>
+          {rating && (
+            <div className="restaurant__info">
+              <img
+                className="restaurant__star-icon"
+                src="/icons/Star-icon.svg"
+                alt="gold star icon"
+                width={20}
+                height={20}
+              />
+              <span>{`${rating}/5`}</span>
+            </div>
+          )}
+          {!rating && (
+            <div className="restaurant__info restaurant__info--empty"></div>
+          )}
+        </div>
+        <div className="restaurant__button-container">
+          <Button
+            classModifierName="delete"
+            action={() => {
+              removeRestaurant(id);
+            }}
+            isDisabled={false}
+            aria-label="borrar restaurante"
+          >
+            <img src="/icons/Trash-icon.svg" alt="trash icon" />
+          </Button>
+        </div>
       </div>
     </article>
   );

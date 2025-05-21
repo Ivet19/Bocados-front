@@ -1,8 +1,8 @@
 import { Navigate, Route, Routes } from "react-router";
-import App from "../components/App/App";
-import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
-import RestaurantsPage from "../restaurant/pages/RestaurantsPage/RestaurantsPage";
-import AddRestaurantPage from "../restaurant/pages/AddRestaurantPage/AddRestaurantPage";
+import App from "../../components/App/App";
+import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
+import RestaurantsPage from "../../restaurant/pages/RestaurantsPage/RestaurantsPage";
+import AddRestaurantPage from "../../restaurant/pages/AddRestaurantPage/AddRestaurantPage";
 
 const AppRouter: React.FC = () => {
   return (

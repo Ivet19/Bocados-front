@@ -11,6 +11,7 @@ import {
   pizzaPlanet,
 } from "../../fixtures";
 import userEvent from "@testing-library/user-event";
+import { jackRabbitSlimsDto } from "../../dto/fixturesDto";
 
 describe("Given the RestaurantsPage component", () => {
   describe("When it renders", () => {
@@ -80,6 +81,35 @@ describe("Given the RestaurantsPage component", () => {
         );
 
         expect(newCheckButton).toBeInTheDocument();
+      });
+    });
+
+    describe("And the user clicks the delete button with a trash icon inside in Jack Rabbit Slim's restaurant", () => {
+      test("Then it should delete Jack Rabbit Slim's restaurant and not show it anymore", async () => {
+        render(
+          <Provider store={store}>
+            <RestaurantsPage />
+          </Provider>,
+          { wrapper: MemoryRouter },
+        );
+
+        const restaurantName = await screen.findByRole("heading", {
+          name: new RegExp(jackRabbitSlimsDto.name, "i"),
+        });
+
+        const restaurantCard = restaurantName.closest("article");
+
+        const deleteButton = await within(restaurantCard!).findByLabelText(
+          /borrar restaurante/i,
+        );
+
+        await userEvent.click(deleteButton);
+
+        const deletedRestaurantName = await screen.queryByRole("heading", {
+          name: new RegExp(jackRabbitSlimsDto.name, "i"),
+        });
+
+        expect(deletedRestaurantName).not.toBeInTheDocument();
       });
     });
   });
