@@ -42,7 +42,6 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
         <Button
           action={() => updateRestaurant(id)}
           classModifierName="visit-state"
-          isDisabled={false}
           aria-label={toggleButtonAriaLabel}
         >
           <img
@@ -105,7 +104,6 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
             action={() => {
               removeRestaurant(id);
             }}
-            isDisabled={false}
             aria-label="borrar restaurante"
           >
             <img src="/icons/Trash-icon.svg" alt="trash icon" />
