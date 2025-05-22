@@ -5,6 +5,7 @@ import useLoading from "../../hooks/hooks/useLoading";
 import {
   createRestaurantActionCreator,
   deleteRestaurantActionCreator,
+  loadRestaurantByIdActionCreator,
   loadRestaurantsActionCreator,
   updateRestaurantActionCreator,
 } from "../slice/restaurantSlice";
@@ -48,6 +49,31 @@ const useRestaurants = () => {
       stopLoading();
     },
     [showModal, startLoading, restaurantClient, stopLoading, dispatch],
+  );
+
+  const loadRestaurantById = useCallback(
+    async (restaurantId: string): Promise<void> => {
+      const loading = setTimeout(() => {
+        startLoading();
+      }, 200);
+
+      try {
+        const restaurant =
+          await restaurantClient.getRestaurantById(restaurantId);
+
+        const action = loadRestaurantByIdActionCreator({ restaurant });
+
+        dispatch(action);
+      } catch {
+        showModal(
+          false,
+          "NO SE HA PODIDO OBTENER LA INFORMACIÓN DEL RESTAURANTE",
+        );
+      } finally {
+        clearTimeout(loading);
+      }
+    },
+    [restaurantClient, dispatch, startLoading, stopLoading, showModal],
   );
 
   const updateRestaurant = useCallback(
@@ -101,6 +127,7 @@ const useRestaurants = () => {
   return {
     restaurantsData,
     loadRestaurants,
+    loadRestaurantById,
     updateRestaurant,
     createRestaurant,
     removeRestaurant,
