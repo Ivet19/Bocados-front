@@ -291,7 +291,7 @@ const RestaurantForm: React.FC<RestaurantFormProps> = ({ action }) => {
         type="submit"
         action={() => {}}
         classModifierName="form"
-        isDisabled={!isFormValid}
+        disabled={!isFormValid}
       >
         Añadir
       </Button>

@@ -16,22 +16,27 @@ const Modal: React.FC<ModalProps> = ({ isSuccess, text, action }) => {
 
   return (
     <dialog open className="modal">
-      <div className={"modal-message-container"}>
-        <Button
-          aria-label="close message"
-          classModifierName="modal"
-          action={action}
-          isDisabled={false}
-        >
-          <img
-            className="cross-icon"
-            src="/icons/Close-icon.svg"
-            alt="cross icon"
-          />
-        </Button>
-        <span className={`modal-text ${modalTextModifier}`}>{text}</span>
-        <span>{modalTextIcon}</span>
-      </div>
+      <Button
+        classModifierName="modal-background"
+        action={action}
+        aria-label="cerrar ventana"
+      >
+        <div className={"modal-message-container"}>
+          <Button
+            aria-label="cerrar mensaje"
+            classModifierName="modal"
+            action={action}
+          >
+            <img
+              className="cross-icon"
+              src="/icons/Close-icon.svg"
+              alt="cross icon"
+            />
+          </Button>
+          <span className={`modal-text ${modalTextModifier}`}>{text}</span>
+          <span>{modalTextIcon}</span>
+        </div>
+      </Button>
     </dialog>
   );
 };

@@ -2,9 +2,9 @@ import React from "react";
 import Header from "../Header/Header";
 import { Outlet } from "react-router";
 import Navigation from "../Navigation/Navigation";
+import useModal from "../../hooks/hooks/useModal";
 import Modal from "../Modal/Modal";
 import "./Layout.css";
-import useModal from "../../hooks/hooks/useModal";
 
 const Layout: React.FC = () => {
   const { modalState, hideModal } = useModal();
@@ -15,14 +15,14 @@ const Layout: React.FC = () => {
       <Navigation />
       <main className="main-container">
         <Outlet />
-        {modalState.isOpen && (
-          <Modal
-            isSuccess={modalState.isSuccess}
-            text={modalState.modalText}
-            action={hideModal}
-          />
-        )}
       </main>
+      {modalState.isOpen && (
+        <Modal
+          isSuccess={modalState.isSuccess}
+          text={modalState.modalText}
+          action={hideModal}
+        />
+      )}
     </div>
   );
 };

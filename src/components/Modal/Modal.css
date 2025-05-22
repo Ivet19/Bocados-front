@@ -9,6 +9,13 @@
   z-index: 2;
 }
 
+.button--modal-background {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .modal-message-container {
   background-color: var(--secondary-color);
   position: fixed;

@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import RestaurantForm from "./RestaurantForm";
 import { MemoryRouter } from "react-router";
 import { Provider } from "react-redux";
+import RestaurantForm from "./RestaurantForm";
 import store from "../../../store/store";
 
 const user = userEvent.setup();
