@@ -2,8 +2,6 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Modal from "./Modal";
 
-const user = userEvent.setup();
-
 beforeEach(() => {
   vitest.clearAllMocks();
 });
@@ -22,24 +20,28 @@ describe("Given the Modal component", () => {
     });
 
     test("Then it should show a closing button with an image of a 'cross icon' inside", () => {
-      const closingButton = /close message/i;
+      const closingButton = /cerrar mensaje/i;
 
       render(<Modal action={action} isSuccess={true} text={modalText} />);
 
-      const modalButton = screen.getByRole("button", { name: closingButton });
+      const modalButton = screen.getByLabelText(closingButton);
 
       expect(modalButton).toBeInTheDocument();
     });
 
-    describe("And the user clicks the 'close message' button", () => {
+    describe("And the user clicks the 'cerrar mensaje' button", () => {
       test("Then it should call the received action", async () => {
-        const closingButton = /close message/i;
+        const closingButton = /cerrar mensaje/i;
 
-        render(<Modal action={action} isSuccess={false} text={modalText} />);
+        render(<Modal action={action} isSuccess={true} text={modalText} />);
 
-        const modalButton = screen.getByRole("button", { name: closingButton });
+        const modalButton = await screen.findByRole("button", {
+          name: closingButton,
+        });
 
-        await user.click(modalButton);
+        expect(modalButton).toBeInTheDocument();
+
+        await userEvent.click(modalButton);
 
         expect(action).toHaveBeenCalled();
       });
