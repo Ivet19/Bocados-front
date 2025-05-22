@@ -169,7 +169,7 @@ const RestaurantForm: React.FC<RestaurantFormProps> = ({ action }) => {
           <input
             type="checkbox"
             id="isVisited"
-            className="post-form__checkbox"
+            className="restaurant-form__checkbox"
             checked={isVisited}
             onChange={changeIsVisited}
             required
