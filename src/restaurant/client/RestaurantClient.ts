@@ -35,6 +35,24 @@ class RestaurantClient implements RestaurantClientStructure {
     return restaurantsData;
   };
 
+  public getRestaurantById = async (
+    restaurantId: string,
+  ): Promise<Restaurant> => {
+    const response = await fetch(`${this.apiUrl}/restaurants/${restaurantId}`);
+
+    if (!response.ok) {
+      throw new Error("Error getting restaurant");
+    }
+
+    const restaurantDto = (await response.json()) as {
+      restaurant: RestaurantDto;
+    };
+
+    const restaurant = mapRestaurantDtoToRestaurant(restaurantDto.restaurant);
+
+    return restaurant;
+  };
+
   public toggleRestaurantById = async (
     RestaurantId: string,
   ): Promise<Restaurant> => {

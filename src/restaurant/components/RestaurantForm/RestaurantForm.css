@@ -46,7 +46,7 @@
   border: 1px solid var(--primary-color);
 }
 
-.post-form__checkbox {
+.restaurant-form__checkbox {
   background-color: #b5b8ab;
   border: 1px solid var(--primary-color);
   height: 25px;

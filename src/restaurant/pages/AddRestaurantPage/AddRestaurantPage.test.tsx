@@ -4,9 +4,9 @@ import { Provider } from "react-redux";
 import AddRestaurantPage from "./AddRestaurantPage";
 import store from "../../../store/store";
 
-describe("Given the AddPostPage component", () => {
+describe("Given the AddRestaurantPage component", () => {
   describe("When it renders", () => {
-    test("Then it should show 'Crear nuevo post' inside a heading", () => {
+    test("Then it should show 'Añadir restaurante' inside a heading", () => {
       const expectedPageTitle = /añadir restaurante/i;
       render(
         <Provider store={store}>

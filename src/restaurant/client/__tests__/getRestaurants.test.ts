@@ -4,7 +4,7 @@ import { moviesRestaurantsFirstPageDto } from "../../dto/fixturesDto";
 import { mapRestaurantsDtoToRestaurants } from "../../dto/mappers";
 import RestaurantsClient from "../RestaurantClient";
 
-describe("Given the getPosts method of PostClient", () => {
+describe("Given the getRestaurants method of RestaurantClient", () => {
   describe("When it's called", () => {
     test("Then it should return Jack Rabbit Slim's, Gusteau's, The Leaky Cauldron, Pizza Planet, Kelp Shake and Moe's Tavern restaurants", async () => {
       const restaurantClient = new RestaurantsClient();
