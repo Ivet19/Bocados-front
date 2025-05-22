@@ -4,6 +4,8 @@ import useRestaurants from "../../hooks/useRestaurants";
 import Pagination from "../../../components/Pagination/Pagination";
 import RestaurantsList from "../../components/RestaurantsList/RestaurantsList";
 import "./RestaurantsPage.css";
+import Loading from "../../../components/Loading/Loading";
+import useLoading from "../../../hooks/hooks/useLoading";
 
 const RestaurantsPage: React.FC = () => {
   const {
@@ -22,6 +24,14 @@ const RestaurantsPage: React.FC = () => {
 
     loadRestaurants(pageNumber);
   }, [loadRestaurants, pageNumber]);
+
+  const {
+    loadingState: { isLoading },
+  } = useLoading();
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <>
