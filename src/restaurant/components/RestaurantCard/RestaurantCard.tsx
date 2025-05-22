@@ -106,7 +106,12 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
             }}
             aria-label="borrar restaurante"
           >
-            <img src="/icons/Trash-icon.svg" alt="trash icon" />
+            <img
+              src="/icons/Trash-icon.svg"
+              alt="trash icon"
+              width={18}
+              height={20}
+            />
           </Button>
         </div>
       </div>
