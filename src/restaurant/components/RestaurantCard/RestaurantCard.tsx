@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import Button from "../../../components/Button/Button";
 import useRestaurants from "../../hooks/useRestaurants";
 import type { Restaurant } from "../../types";
@@ -52,14 +53,19 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
           />
         </Button>
       </div>
-      <img
-        className="restaurant__image"
-        src={imageUrl}
-        alt={imageAlt}
-        width={354}
-        height={200}
-        loading={loadingType}
-      />
+      <div className="restaurant__image-container">
+        <img
+          className="restaurant__image"
+          src={imageUrl}
+          alt={imageAlt}
+          width={354}
+          height={200}
+          loading={loadingType}
+        />
+        <Link to={id} className="restaurant__detail-link">
+          Ver más
+        </Link>
+      </div>
       <div className="restaurant__bottom-info">
         <div className="restaurant__info-container">
           <div className="restaurant__info">
@@ -98,7 +104,7 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
             <div className="restaurant__info restaurant__info--empty"></div>
           )}
         </div>
-        <div className="restaurant__button-container">
+        <div className="restaurant__buttons-container">
           <Button
             classModifierName="delete"
             action={() => {

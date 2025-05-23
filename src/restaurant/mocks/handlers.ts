@@ -2,6 +2,7 @@ import { http, HttpResponse } from "msw";
 import type { RestaurantDto } from "../dto/typesDto";
 import {
   jackRabbitSlimsDto,
+  leakyCauldronDto,
   moesTavernDto,
   moviesRestaurantsDto,
   moviesRestaurantsFirstPageDto,
@@ -38,6 +39,18 @@ export const handlers = [
     }>({
       restaurants: moviesRestaurantsFirstPageDto,
       restaurantsTotal: moviesRestaurantsDto.length,
+    });
+  }),
+
+  http.get(`${apiUrl}/restaurants/${jackRabbitSlimsDto._id}`, () => {
+    return HttpResponse.json<{ restaurant: RestaurantDto }>({
+      restaurant: jackRabbitSlimsDto,
+    });
+  }),
+
+  http.get(`${apiUrl}/restaurants/${leakyCauldronDto._id}`, () => {
+    return HttpResponse.json<{ restaurant: RestaurantDto }>({
+      restaurant: leakyCauldronDto,
     });
   }),
 
