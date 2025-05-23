@@ -11,3 +11,8 @@ export const LazyAddRestaurantPage = lazy(
 export const LazyNotfoundPage = lazy(
   () => import("../../pages/NotFoundPage/NotFoundPage"),
 );
+
+export const LazyRestaurantDetailPage = lazy(
+  () =>
+    import("../../restaurant/pages/RestaurantDetailPage/RestaurantDetailPage"),
+);
