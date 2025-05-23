@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
 import { Provider } from "react-redux";
 import userEvent from "@testing-library/user-event";
@@ -6,6 +6,8 @@ import Layout from "./Layout";
 import store from "../../store/store";
 import AppTestRouter from "../../router/AppTestRouter/AppTestRouter";
 import "./Layout.css";
+import { jackRabbitSlims } from "../../restaurant/fixtures";
+import { jackRabbitSlimsDto } from "../../restaurant/dto/fixturesDto";
 
 describe("Given the Layout component", () => {
   describe("When it renders", () => {
@@ -103,6 +105,41 @@ describe("Given the Layout component", () => {
   });
 
   describe("When it renders in path /restaurants", () => {
+    describe("And the user clicks 'ver más' link in Jack Rabbit Slim's", () => {
+      test("Then it should show Jack Rabbit Slim's restaurant description", async () => {
+        render(
+          <Provider store={store}>
+            <MemoryRouter initialEntries={["/restaurants"]}>
+              <Layout />
+              <AppTestRouter />
+            </MemoryRouter>
+          </Provider>,
+        );
+
+        const restaurantName = await screen.findByRole("heading", {
+          name: new RegExp(jackRabbitSlims.name, "i"),
+        });
+
+        expect(restaurantName).toBeInTheDocument();
+
+        const restaurantCard = restaurantName.closest("article");
+
+        const detailLink = await within(restaurantCard!).findByRole("link", {
+          name: /ver más/i,
+        });
+
+        debugger;
+
+        await userEvent.click(detailLink);
+
+        const description = await screen.findByText(
+          jackRabbitSlimsDto.description,
+        );
+
+        expect(description).toBeVisible();
+      });
+    });
+
     describe("And the user clicks the link 'siguiente'", () => {
       test("Then it should show moe's tavern inside a heading in the new page", async () => {
         const expectedSecondPageTitle = new RegExp("moe's tavern", "i");
