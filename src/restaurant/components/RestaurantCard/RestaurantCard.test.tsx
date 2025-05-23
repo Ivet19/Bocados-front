@@ -63,6 +63,21 @@ describe("Given the RestaurantCard component", () => {
       expect(deleteButton).toBeVisible();
     });
 
+    test("Then it should show a 'ver más' link", () => {
+      render(
+        <Provider store={store}>
+          <RestaurantCard restaurant={moesTavern} position={0} />
+        </Provider>,
+        { wrapper: MemoryRouter },
+      );
+
+      const detailLink = screen.getByRole("link", {
+        name: /ver más/i,
+      });
+
+      expect(detailLink).toBeVisible();
+    });
+
     describe("And it's visited", () => {
       test("Then it should show a green check button", () => {
         render(
