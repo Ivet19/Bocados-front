@@ -20,6 +20,7 @@ export const visitedJackRabbitSlimsDto: RestaurantDto = {
   description:
     "El restaurante de temática cincuentera que aparece en 'Pulp Fiction', donde Vincent Vega y Mia Wallace comparten una famosa escena de baile. Ambientado con camareros disfrazados de íconos de los años 50 y decorado con coches clásicos como mesas. Sirve hamburguesas, batidos caros y rock and roll como acompañamiento.",
   isVisited: true,
+  servingsAmount: "Generosa",
 };
 
 export const gusteausDto: RestaurantDto = {
