@@ -16,12 +16,12 @@ const RestaurantForm: React.FC<RestaurantFormProps> = ({ action }) => {
     imageUrl: "",
     description: "",
     isVisited: false,
+    servingsAmount: undefined,
+    waitTime: undefined,
+    customerService: undefined,
+    priceCategory: undefined,
+    rating: undefined,
     visitDate: "",
-    servingsAmount: "Normal",
-    waitTime: "Normal",
-    customerService: "Regular",
-    priceCategory: "Medio",
-    rating: 0,
   };
 
   const [restaurantData, setRestaurantData] = useState(initialRestaurantData);
@@ -87,8 +87,25 @@ const RestaurantForm: React.FC<RestaurantFormProps> = ({ action }) => {
   ): Promise<void> => {
     event.preventDefault();
 
-    await action(restaurantData);
+    const cleanedData = { ...restaurantData };
 
+    if (!cleanedData.isVisited) {
+      delete cleanedData.visitDate;
+      delete cleanedData.servingsAmount;
+      delete cleanedData.waitTime;
+      delete cleanedData.customerService;
+      delete cleanedData.priceCategory;
+      delete cleanedData.rating;
+    } else {
+      if (!cleanedData.visitDate) delete cleanedData.visitDate;
+      if (!cleanedData.servingsAmount) delete cleanedData.servingsAmount;
+      if (!cleanedData.waitTime) delete cleanedData.waitTime;
+      if (!cleanedData.customerService) delete cleanedData.customerService;
+      if (!cleanedData.priceCategory) delete cleanedData.priceCategory;
+      if (cleanedData.rating === 0) delete cleanedData.rating;
+    }
+
+    await action(cleanedData);
     navigate("/");
   };
 
@@ -186,7 +203,7 @@ const RestaurantForm: React.FC<RestaurantFormProps> = ({ action }) => {
             type="date"
             id="visitDate"
             className="restaurant-form__control"
-            value={restaurantData.visitDate}
+            value={restaurantData.visitDate ?? ""}
             onChange={changeRestaurantData}
             disabled={!isVisited}
           />
@@ -198,7 +215,7 @@ const RestaurantForm: React.FC<RestaurantFormProps> = ({ action }) => {
           <select
             id="servingsAmount"
             className="restaurant-form__control"
-            value={restaurantData.servingsAmount}
+            value={restaurantData.servingsAmount ?? ""}
             onChange={changeRestaurantData}
             disabled={!isVisited}
           >
@@ -215,7 +232,7 @@ const RestaurantForm: React.FC<RestaurantFormProps> = ({ action }) => {
           <select
             id="waitTime"
             className="restaurant-form__control"
-            value={restaurantData.waitTime}
+            value={restaurantData.waitTime ?? ""}
             onChange={changeRestaurantData}
             disabled={!isVisited}
           >
@@ -232,7 +249,7 @@ const RestaurantForm: React.FC<RestaurantFormProps> = ({ action }) => {
           <select
             id="customerService"
             className="restaurant-form__control"
-            value={restaurantData.customerService}
+            value={restaurantData.customerService ?? ""}
             onChange={changeRestaurantData}
             disabled={!isVisited}
           >
@@ -251,7 +268,7 @@ const RestaurantForm: React.FC<RestaurantFormProps> = ({ action }) => {
           <select
             id="priceCategory"
             className="restaurant-form__control"
-            value={restaurantData.priceCategory}
+            value={restaurantData.priceCategory ?? ""}
             onChange={changeRestaurantData}
             disabled={!isVisited}
           >
@@ -273,7 +290,7 @@ const RestaurantForm: React.FC<RestaurantFormProps> = ({ action }) => {
               step={0.1}
               id="rating"
               className="restaurant-form__control restaurant-form__control--rating"
-              value={restaurantData.rating}
+              value={restaurantData.rating ?? ""}
               onChange={changeRating}
               disabled={!isVisited}
             />
