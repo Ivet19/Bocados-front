@@ -7,7 +7,7 @@ const Loading: React.FC = () => {
       <h2 className="loading__message">Cargando información...</h2>
       <img
         className="loading__image"
-        src="images/loading.svg"
+        src="/images/loading.svg"
         alt="un hombre aburrido esperando sentado a que le llegue la comida"
         width={175}
         height={180}

@@ -61,9 +61,13 @@ const RestaurantForm: React.FC<RestaurantFormProps> = ({ action }) => {
 
     let parsedRating = parseFloat(value);
 
-    if (isNaN(parsedRating)) return;
+    if (isNaN(parsedRating)) {
+      return;
+    }
 
-    if (parsedRating > 5) parsedRating = 5;
+    if (parsedRating > 5) {
+      parsedRating = 5;
+    }
 
     parsedRating = Math.round(parsedRating * 10) / 10;
 

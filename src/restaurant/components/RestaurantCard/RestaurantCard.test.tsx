@@ -3,6 +3,7 @@ import { render, screen } from "@testing-library/react";
 import store from "../../../store/store";
 import RestaurantCard from "./RestaurantCard";
 import { jackRabbitSlims, moesTavern } from "../../fixtures";
+import { MemoryRouter } from "react-router";
 
 describe("Given the RestaurantCard component", () => {
   describe("When it receives Moe's Tavern restaurant", () => {
@@ -13,6 +14,7 @@ describe("Given the RestaurantCard component", () => {
         <Provider store={store}>
           <RestaurantCard restaurant={moesTavern} position={0} />
         </Provider>,
+        { wrapper: MemoryRouter },
       );
 
       const restaurantTitle = screen.getByRole("heading", {
@@ -27,6 +29,7 @@ describe("Given the RestaurantCard component", () => {
         <Provider store={store}>
           <RestaurantCard restaurant={moesTavern} position={0} />
         </Provider>,
+        { wrapper: MemoryRouter },
       );
 
       const restaurantImage = screen.getByAltText(moesTavern.imageAlt);
@@ -39,6 +42,7 @@ describe("Given the RestaurantCard component", () => {
         <Provider store={store}>
           <RestaurantCard restaurant={moesTavern} position={0} />
         </Provider>,
+        { wrapper: MemoryRouter },
       );
 
       const restaurantFoodType = screen.getByText(moesTavern.foodType);
@@ -51,6 +55,7 @@ describe("Given the RestaurantCard component", () => {
         <Provider store={store}>
           <RestaurantCard restaurant={moesTavern} position={0} />
         </Provider>,
+        { wrapper: MemoryRouter },
       );
 
       const deleteButton = screen.getByLabelText(/borrar restaurante/i);
@@ -64,6 +69,7 @@ describe("Given the RestaurantCard component", () => {
           <Provider store={store}>
             <RestaurantCard restaurant={moesTavern} position={0} />
           </Provider>,
+          { wrapper: MemoryRouter },
         );
 
         const checkButton = screen.getByAltText(/green check icon/i);
@@ -79,6 +85,7 @@ describe("Given the RestaurantCard component", () => {
         <Provider store={store}>
           <RestaurantCard restaurant={jackRabbitSlims} position={0} />
         </Provider>,
+        { wrapper: MemoryRouter },
       );
 
       const checkButton = screen.getByAltText(/grey check icon/i);
