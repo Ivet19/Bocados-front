@@ -2,12 +2,14 @@ import { http, HttpResponse } from "msw";
 import type { RestaurantDto } from "../dto/typesDto";
 import {
   jackRabbitSlimsDto,
+  kelpShakeDto,
   leakyCauldronDto,
   moesTavernDto,
   moviesRestaurantsDto,
   moviesRestaurantsFirstPageDto,
   moviesRestaurantsSecondPageDto,
   pizzaPlanetDto,
+  updatedKelpShakeDto,
   visitedJackRabbitSlimsDto,
 } from "../dto/fixturesDto";
 import { jackRabbitSlims, threeBroomsticksDto } from "../fixtures";
@@ -65,6 +67,15 @@ export const handlers = [
     () => {
       return HttpResponse.json<{ restaurant: RestaurantDto }>({
         restaurant: visitedJackRabbitSlimsDto,
+      });
+    },
+  ),
+
+  http.put(
+    `${apiUrl}/restaurants/modify-restaurant/${kelpShakeDto._id}`,
+    () => {
+      return HttpResponse.json<{ restaurant: RestaurantDto }>({
+        restaurant: updatedKelpShakeDto,
       });
     },
   ),

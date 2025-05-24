@@ -22,9 +22,10 @@ describe("Given the getRestaurantById method to RestaurantClient", () => {
   describe("When it's called and response is not ok", () => {
     test("Then it should throw 'Error getting restaurant'", () => {
       const apiUrl = import.meta.env.VITE_API_URL;
+      const fetchUrl = `${apiUrl}/restaurants/${moesTavernDto._id}`;
 
       server.use(
-        http.get(`${apiUrl}/restaurants/${moesTavernDto._id}`, () => {
+        http.get(fetchUrl, () => {
           return new HttpResponse(null, { status: 500 });
         }),
       );

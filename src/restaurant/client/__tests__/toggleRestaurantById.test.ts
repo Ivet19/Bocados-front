@@ -19,14 +19,12 @@ describe("Given the toggleRestaurantById method of RestaurantClient", () => {
   describe("When it's called and the response is not ok", () => {
     test("Then it should throw 'Error updating restaurant'", () => {
       const apiUrl = import.meta.env.VITE_API_URL;
+      const fetchUrl = `${apiUrl}/restaurants/visit-restaurant/662a1c9d7f8b9f001a1b0011`;
 
       server.use(
-        http.patch(
-          `${apiUrl}/restaurants/visit-restaurant/662a1c9d7f8b9f001a1b0011`,
-          () => {
-            return new HttpResponse(null, { status: 500 });
-          },
-        ),
+        http.patch(fetchUrl, () => {
+          return new HttpResponse(null, { status: 500 });
+        }),
       );
 
       const restaurantClient = new RestaurantsClient();
