@@ -22,9 +22,10 @@ describe("Given the deleteRestaurant method of RestaurantClient", () => {
   describe("When it's called and response is not ok", () => {
     test("Then it should throw 'Error deleting restaurant'", () => {
       const apiUrl = import.meta.env.VITE_API_URL;
+      const fetchUrl = `${apiUrl}/restaurants/${threeBroomsticksDto._id}`;
 
       server.use(
-        http.delete(`${apiUrl}/restaurants/${threeBroomsticksDto._id}`, () => {
+        http.delete(fetchUrl, () => {
           return new HttpResponse(null, { status: 500 });
         }),
       );

@@ -1,3 +1,4 @@
+import type { RestaurantData } from "../types";
 import type { RestaurantDto } from "./typesDto";
 
 export const jackRabbitSlimsDto: RestaurantDto = {
@@ -98,6 +99,37 @@ export const kelpShakeDto: RestaurantDto = {
   visitDate: new Date("2025-01-05").toISOString(),
 };
 
+export const kelpShakeDtoData: RestaurantData = {
+  name: "McBobEsponja",
+  adress: "Fondo de Bikini",
+  foodType: "Marina ficticia",
+  imageUrl: "https://i.ibb.co/9H68GYY/kelp-shake.jpg",
+  description:
+    "Kelp Shake es la famosa cadena de comida rápida submarina que aparece en la película y serie de 'Bob Esponja'. Con su menú de batidos de alga y hamburguesas marinas, se convirtió en una sensación entre los ciudadanos de Fondo de Bikini, aunque no sin controversia. Su ambiente rápido y precios accesibles lo convierten en el competidor directo del Crustáceo Cascarudo.",
+  isVisited: true,
+  servingsAmount: "Poca",
+  waitTime: "Poco",
+  customerService: "Regular",
+  rating: 3.2,
+  visitDate: new Date("2025-01-05").toISOString(),
+};
+
+export const updatedKelpShakeDto: RestaurantDto = {
+  _id: "662a1c9d7f8b9f001a1b0016",
+  name: "McBobEsponja",
+  adress: "Fondo de Bikini",
+  foodType: "Marina ficticia",
+  imageUrl: "https://i.ibb.co/9H68GYY/kelp-shake.jpg",
+  description:
+    "Kelp Shake es la famosa cadena de comida rápida submarina que aparece en la película y serie de 'Bob Esponja'. Con su menú de batidos de alga y hamburguesas marinas, se convirtió en una sensación entre los ciudadanos de Fondo de Bikini, aunque no sin controversia. Su ambiente rápido y precios accesibles lo convierten en el competidor directo del Crustáceo Cascarudo.",
+  isVisited: true,
+  servingsAmount: "Poca",
+  waitTime: "Poco",
+  customerService: "Regular",
+  rating: 3.2,
+  visitDate: new Date("2025-01-05").toISOString(),
+};
+
 export const moesTavernDto: RestaurantDto = {
   _id: "662a1c9d7f8b9f001a1b0017",
   name: "Moe's Tavern",
@@ -109,6 +141,21 @@ export const moesTavernDto: RestaurantDto = {
   isVisited: true,
   waitTime: "Poco",
   customerService: "Bueno",
+  priceCategory: "Bajo",
+  rating: 4.0,
+  visitDate: new Date("2024-09-23").toISOString(),
+};
+
+export const moesTavernDtoData: RestaurantData = {
+  name: "Moe's Tavern",
+  adress: "742 Evergreen Terrace, Springfield",
+  foodType: "Pub americano",
+  imageUrl: "https://i.ibb.co/tKTkMDz/moes-tavern.jpg",
+  description:
+    "El bar favorito de Homer Simpson en la serie y película de 'Los Simpson'. Moe's Tavern es un bar oscuro y desaliñado donde los clientes habituales pasan horas bebiendo cerveza Duff. Aunque la comida no es su punto fuerte, su importancia cultural dentro del universo de Springfield es enorme. El ambiente es informal y muy local.",
+  isVisited: true,
+  waitTime: "Poco",
+  customerService: "Regular",
   priceCategory: "Bajo",
   rating: 4.0,
   visitDate: new Date("2024-09-23").toISOString(),

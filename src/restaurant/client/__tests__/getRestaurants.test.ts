@@ -34,9 +34,10 @@ describe("Given the getRestaurants method of RestaurantClient", () => {
   describe("When it's called and response is not ok", () => {
     test("Then it should throw 'Error fetching restaurants'", () => {
       const apiUrl = import.meta.env.VITE_API_URL;
+      const fetchUrl = `${apiUrl}/restaurants`;
 
       server.use(
-        http.get(`${apiUrl}/restaurants`, () => {
+        http.get(fetchUrl, () => {
           return new HttpResponse(null, { status: 500 });
         }),
       );

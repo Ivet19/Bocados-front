@@ -21,9 +21,10 @@ describe("Given the addRestaurant method of RestaurantClient", () => {
   describe("When it's called and there's no response or it's not ok", () => {
     test("Then it should throw 'Error adding the new restaurant'", async () => {
       const apiUrl = import.meta.env.VITE_API_URL;
+      const fetchUrl = `${apiUrl}/restaurants`;
 
       server.use(
-        http.post(`${apiUrl}/restaurants`, () => {
+        http.post(fetchUrl, () => {
           return new HttpResponse(null, { status: 500 });
         }),
       );
