@@ -83,6 +83,21 @@ export const threeBroomsticksDto: RestaurantDto = {
   visitDate: new Date("2025-02-12").toISOString(),
 };
 
+export const threeBroomsticksDtoData: RestaurantData = {
+  name: "The Three Broomsticks",
+  adress: "Hogsmeade, Escocia",
+  foodType: "Tavern / mágica",
+  imageUrl: "https://i.ibb.co/JzLVDCM/three-broomsticks.jpg",
+  description:
+    "Taberna mágica del universo 'Harry Potter', famosa por su cerveza de mantequilla caliente y comida tradicional británica. Regenteada por Madam Rosmerta, es un lugar de descanso para estudiantes y profesores de Hogwarts. Su atmósfera acogedora, chimeneas encendidas y encanto antiguo la convierten en un destino obligatorio en Hogsmeade.",
+  isVisited: true,
+  servingsAmount: "Generosa",
+  customerService: "Muy bueno",
+  priceCategory: "Medio",
+  rating: 4.7,
+  visitDate: new Date("2025-02-12").toISOString(),
+};
+
 export const kelpShakeDto: RestaurantDto = {
   _id: "662a1c9d7f8b9f001a1b0016",
   name: "Kelp Shake",

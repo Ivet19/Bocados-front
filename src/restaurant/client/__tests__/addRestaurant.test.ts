@@ -2,7 +2,8 @@ import { http, HttpResponse } from "msw";
 import { mapRestaurantDtoToRestaurant } from "../../dto/mappers";
 import { server } from "../../mocks/node";
 import RestaurantClient from "../RestaurantClient";
-import { threeBroomsticksData, threeBroomsticksDto } from "../../fixtures";
+import { threeBroomsticksData } from "../../fixtures";
+import { threeBroomsticksDto } from "../../dto/fixturesDto";
 
 describe("Given the addRestaurant method of RestaurantClient", () => {
   describe("When it's called with Three Broomsticks restaurant data", () => {

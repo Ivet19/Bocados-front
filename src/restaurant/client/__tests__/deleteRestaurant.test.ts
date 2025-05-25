@@ -2,7 +2,7 @@ import { http, HttpResponse } from "msw";
 import { server } from "../../mocks/node";
 import RestaurantClient from "../RestaurantClient";
 import { mapRestaurantDtoToRestaurant } from "../../dto/mappers";
-import { threeBroomsticksDto } from "../../fixtures";
+import { threeBroomsticksDto } from "../../dto/fixturesDto";
 
 describe("Given the deleteRestaurant method of RestaurantClient", () => {
   describe("When it's called with The Three Broomsticks restaurant id", () => {

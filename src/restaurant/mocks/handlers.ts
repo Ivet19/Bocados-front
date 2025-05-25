@@ -12,7 +12,8 @@ import {
   updatedKelpShakeDto,
   visitedJackRabbitSlimsDto,
 } from "../dto/fixturesDto";
-import { jackRabbitSlims, threeBroomsticksDto } from "../fixtures";
+import { jackRabbitSlims } from "../fixtures";
+import { threeBroomsticksDto } from "../dto/fixturesDto";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -76,6 +77,15 @@ export const handlers = [
     () => {
       return HttpResponse.json<{ restaurant: RestaurantDto }>({
         restaurant: updatedKelpShakeDto,
+      });
+    },
+  ),
+
+  http.put(
+    `${apiUrl}/restaurants/modify-restaurant/${threeBroomsticksDto._id}`,
+    () => {
+      return HttpResponse.json<{ restaurant: RestaurantDto }>({
+        restaurant: threeBroomsticksDto,
       });
     },
   ),
