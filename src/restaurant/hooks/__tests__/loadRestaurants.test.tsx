@@ -5,6 +5,7 @@ import useRestaurants from "../useRestaurants";
 import { moesTavern } from "../../fixtures";
 import type { RestaurantState } from "../../slice/types";
 import setupStore from "../../../store/setUpStore";
+import type { ModalState } from "../../../slices/types";
 
 describe("Given the loadRestaurants function", () => {
   describe("When it's called with page number 2", () => {
@@ -12,12 +13,20 @@ describe("Given the loadRestaurants function", () => {
       const expectedRestaurantName = "Moe's Tavern";
       const expectedRestaurantsTotal = 6;
 
-      const initialState: { restaurantStateData: RestaurantState } = {
+      const initialState: {
+        restaurantStateData: RestaurantState;
+        modal: ModalState;
+      } = {
         restaurantStateData: {
           restaurantsData: {
             restaurants: [moesTavern],
             restaurantsTotal: 6,
           },
+        },
+        modal: {
+          isSuccess: true,
+          isOpen: false,
+          modalText: "",
         },
       };
 

@@ -1,22 +1,28 @@
 import { Provider } from "react-redux";
-import { renderHook } from "@testing-library/react";
-import { act } from "react";
-import useRestaurants from "../useRestaurants";
-import { jackRabbitSlims, visitedJackRabbitSlims } from "../../fixtures";
+import { threeBroomsticks } from "../../fixtures";
 import setupStore from "../../../store/setUpStore";
 import type { RestaurantState } from "../../slice/types";
+import { renderHook } from "@testing-library/react";
+import useRestaurants from "../useRestaurants";
+import { act } from "react";
+import {
+  threeBroomsticksDto,
+  threeBroomsticksDtoData,
+} from "../../dto/fixturesDto";
 import type { ModalState } from "../../../slices/types";
 
-describe("Given the updateRestaurantById function", () => {
-  describe("When it's called with not visited Jack Rabbit Slim's restaurant id", () => {
-    test("Then it should return Jack Rabbit's Slim's restaurant as visited", async () => {
+describe("Given the modifyRestaurant function of useRestaurants", () => {
+  describe("When it's called with Three Broomsticks modified restaurant", () => {
+    test("Then it should replace Three Broomsticks modified restaurant to the new state data", async () => {
+      const expectedRestaurantName = threeBroomsticks.name;
+
       const initialState: {
         restaurantStateData: RestaurantState;
         modal: ModalState;
       } = {
         restaurantStateData: {
           restaurantsData: {
-            restaurants: [jackRabbitSlims],
+            restaurants: [threeBroomsticks],
             restaurantsTotal: 1,
           },
         },
@@ -36,16 +42,16 @@ describe("Given the updateRestaurantById function", () => {
       const { result } = renderHook(() => useRestaurants(), { wrapper });
 
       await act(() => {
-        result.current.updateRestaurant(jackRabbitSlims.id);
+        result.current.modifyRestaurant(
+          threeBroomsticksDto._id,
+          threeBroomsticksDtoData,
+        );
       });
 
-      const restaurants = result.current.restaurantsData.restaurants;
+      const { restaurants } = result.current.restaurantsData;
 
       expect(restaurants).toContainEqual(
-        expect.objectContaining({
-          name: visitedJackRabbitSlims.name,
-          isVisited: true,
-        }),
+        expect.objectContaining({ name: expectedRestaurantName }),
       );
     });
   });

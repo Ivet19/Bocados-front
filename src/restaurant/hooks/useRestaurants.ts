@@ -7,6 +7,7 @@ import {
   deleteRestaurantActionCreator,
   loadRestaurantByIdActionCreator,
   loadRestaurantsActionCreator,
+  modifyRestaurantActionCreator,
   updateRestaurantActionCreator,
 } from "../slice/restaurantSlice";
 import useModal from "../../hooks/hooks/useModal";
@@ -92,6 +93,27 @@ const useRestaurants = () => {
     [showModal, restaurantClient, dispatch],
   );
 
+  const modifyRestaurant = useCallback(
+    async (
+      restaurantId: string,
+      restaurantData: RestaurantData,
+    ): Promise<void> => {
+      try {
+        const restaurant = await restaurantClient.updateRestaurant(
+          restaurantId,
+          restaurantData,
+        );
+
+        const action = modifyRestaurantActionCreator(restaurant);
+
+        dispatch(action);
+      } catch {
+        showModal(false, "NO SE HA PODIDO MODIFICAR EL RESTAURANTE");
+      }
+    },
+    [showModal, restaurantClient, dispatch],
+  );
+
   const createRestaurant = async (
     restaurantData: RestaurantData,
   ): Promise<void> => {
@@ -129,6 +151,7 @@ const useRestaurants = () => {
     loadRestaurants,
     loadRestaurantById,
     updateRestaurant,
+    modifyRestaurant,
     createRestaurant,
     removeRestaurant,
   };

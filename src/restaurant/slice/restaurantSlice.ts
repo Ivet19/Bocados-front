@@ -44,12 +44,32 @@ const restaurantSlice = createSlice({
       currentState,
       action: PayloadAction<Restaurant>,
     ): RestaurantState => {
+      const updatedRestaurant = action.payload;
+      const restaurantId = updatedRestaurant.id;
+
       return {
         restaurantsData: {
           ...currentState.restaurantsData,
           restaurants: currentState.restaurantsData.restaurants.map(
             (restaurant) =>
-              restaurant.id === action.payload.id ? action.payload : restaurant,
+              restaurant.id === restaurantId ? updatedRestaurant : restaurant,
+          ),
+        },
+      };
+    },
+    modifyRestaurant: (
+      currentState,
+      action: PayloadAction<Restaurant>,
+    ): RestaurantState => {
+      const modifiedRestaurant = action.payload;
+      const restaurantId = modifiedRestaurant.id;
+
+      return {
+        restaurantsData: {
+          ...currentState.restaurantsData,
+          restaurants: currentState.restaurantsData.restaurants.map(
+            (restaurant) =>
+              restaurant.id === restaurantId ? modifiedRestaurant : restaurant,
           ),
         },
       };
@@ -91,6 +111,7 @@ export const {
   loadRestaurants: loadRestaurantsActionCreator,
   loadRestaurantById: loadRestaurantByIdActionCreator,
   updateRestaurant: updateRestaurantActionCreator,
+  modifyRestaurant: modifyRestaurantActionCreator,
   createRestaurant: createRestaurantActionCreator,
   removeRestaurant: deleteRestaurantActionCreator,
 } = restaurantSlice.actions;

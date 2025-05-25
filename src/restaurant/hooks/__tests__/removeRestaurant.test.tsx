@@ -5,6 +5,7 @@ import { pizzaPlanet } from "../../fixtures";
 import type { RestaurantState } from "../../slice/types";
 import { pizzaPlanetDto } from "../../dto/fixturesDto";
 import setupStore from "../../../store/setUpStore";
+import type { ModalState } from "../../../slices/types";
 
 describe("Given the removeRestaurant function", () => {
   describe("When it's called with Pizza Planet restaurant id", () => {
@@ -12,12 +13,20 @@ describe("Given the removeRestaurant function", () => {
       const expectedDeletedRestaurantName = "Moe's Tavern";
       const expectedRestaurantsTotal = 5;
 
-      const initialState: { restaurantStateData: RestaurantState } = {
+      const initialState: {
+        restaurantStateData: RestaurantState;
+        modal: ModalState;
+      } = {
         restaurantStateData: {
           restaurantsData: {
             restaurants: [pizzaPlanet],
             restaurantsTotal: 6,
           },
+        },
+        modal: {
+          isSuccess: true,
+          isOpen: false,
+          modalText: "",
         },
       };
 
