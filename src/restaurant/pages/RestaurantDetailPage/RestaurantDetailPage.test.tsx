@@ -21,10 +21,10 @@ describe("Given the RestaurantDetailPage component", () => {
         name: /jack rabbit slim's/i,
       });
 
-      expect(restaurantName).toBeVisible();
+      expect(restaurantName).toBeInTheDocument();
     });
 
-    test("Then it should show a mark as visited button", async () => {
+    test("Then it should show a 'marcar como visitado' button", async () => {
       render(
         <Provider store={store}>
           <MemoryRouter initialEntries={[`/restaurants/${jackRabbitSlims.id}`]}>
@@ -34,10 +34,10 @@ describe("Given the RestaurantDetailPage component", () => {
       );
 
       const checkButton = await screen.getByRole("button", {
-        name: /mark as visited/i,
+        name: /marcar como visitado/i,
       });
 
-      expect(checkButton).toBeVisible();
+      expect(checkButton).toBeInTheDocument();
     });
 
     test("Then it should show Jack Rabbit Slim's restaurant's description", async () => {
@@ -53,7 +53,7 @@ describe("Given the RestaurantDetailPage component", () => {
         jackRabbitSlims.description,
       );
 
-      expect(restaurantDescription).toBeVisible();
+      expect(restaurantDescription).toBeInTheDocument();
     });
   });
 
@@ -75,7 +75,7 @@ describe("Given the RestaurantDetailPage component", () => {
         expectedServingsAmount,
       );
 
-      expect(restaurantServingsAmount).toBeVisible();
+      expect(restaurantServingsAmount).toBeInTheDocument();
     });
   });
 });

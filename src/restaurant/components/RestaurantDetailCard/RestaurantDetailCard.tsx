@@ -30,11 +30,9 @@ const RestaurantDetailCard: React.FC<RestaurantDelailCardProps> = ({
     ? "/icons/Visited-green.svg"
     : "/icons/Visited-grey.svg";
 
-  const checkIconColor = isVisited ? "green" : "grey";
-
   const toggleButtonAriaLabel = isVisited
-    ? "mark as not visited"
-    : "mark as visited";
+    ? "marcar como no visitado"
+    : "marcar como visitado";
 
   const optionalData =
     servingsAmount || waitTime || customerService || priceCategory;
@@ -71,7 +69,6 @@ const RestaurantDetailCard: React.FC<RestaurantDelailCardProps> = ({
           >
             <img
               src={checkIcon}
-              alt={`${checkIconColor} check icon`}
               width={35}
               height={35}
               className="button__check-icon"

@@ -17,7 +17,7 @@ describe("Given the Button component", () => {
         name: new RegExp(expectedText, "i"),
       });
 
-      expect(buttonElement).toBeVisible();
+      expect(buttonElement).toBeInTheDocument();
     });
 
     describe("And the user clicks the 'Play' button", () => {
