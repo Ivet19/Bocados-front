@@ -11,9 +11,9 @@ import {
   pizzaPlanetDto,
   updatedKelpShakeDto,
   visitedJackRabbitSlimsDto,
+  threeBroomsticksDto,
 } from "../dto/fixturesDto";
 import { jackRabbitSlims } from "../fixtures";
-import { threeBroomsticksDto } from "../dto/fixturesDto";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
