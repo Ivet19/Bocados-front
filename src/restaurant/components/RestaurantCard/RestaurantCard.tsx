@@ -28,11 +28,9 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
     ? "/icons/Visited-green.svg"
     : "/icons/Visited-grey.svg";
 
-  const checkIconColor = isVisited ? "green" : "grey";
-
   const toggleButtonAriaLabel = isVisited
-    ? "mark as not visited"
-    : "mark as visited";
+    ? "marcar como no visitado"
+    : "marcar como visitado";
 
   const { updateRestaurant, removeRestaurant } = useRestaurants();
 
@@ -45,12 +43,7 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
           classModifierName="visit-state"
           aria-label={toggleButtonAriaLabel}
         >
-          <img
-            src={checkIcon}
-            alt={`${checkIconColor} check icon`}
-            width={35}
-            height={35}
-          />
+          <img src={checkIcon} width={35} height={35} />
         </Button>
       </div>
       <div className="restaurant__image-container">
@@ -112,13 +105,20 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
             }}
             aria-label="borrar restaurante"
           >
+            <img src="/icons/Trash-icon.svg" width={18} height={20} />
+          </Button>
+          <Link
+            to={`modify-restaurant/${id}`}
+            className="restaurant__modify-link"
+            aria-label="modificar restaurante"
+          >
             <img
-              src="/icons/Trash-icon.svg"
-              alt="trash icon"
+              src="/icons/Edit-icon.svg"
+              alt="edit icon"
               width={18}
               height={20}
             />
-          </Button>
+          </Link>
         </div>
       </div>
     </article>

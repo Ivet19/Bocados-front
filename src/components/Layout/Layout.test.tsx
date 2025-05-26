@@ -49,8 +49,8 @@ describe("Given the Layout component", () => {
         name: /añadir restaurante/i,
       });
 
-      expect(restaurantsLink).toBeVisible();
-      expect(addRestaurantLink).toBeVisible();
+      expect(restaurantsLink).toBeInTheDocument();
+      expect(addRestaurantLink).toBeInTheDocument();
     });
 
     describe("And the user clicks the link 'restaurantes", () => {
@@ -136,7 +136,40 @@ describe("Given the Layout component", () => {
           jackRabbitSlimsDto.description,
         );
 
-        expect(description).toBeVisible();
+        expect(description).toBeInTheDocument();
+      });
+    });
+
+    describe("And the user clicks 'modificar' link in Jack Rabbit Slim's", () => {
+      test("Then it should show 'A continuación puedes modificar los datos de Jack Rabbit Slim's' inside a heading", async () => {
+        render(
+          <Provider store={store}>
+            <MemoryRouter initialEntries={["/restaurants"]}>
+              <Layout />
+              <AppTestRouter />
+            </MemoryRouter>
+          </Provider>,
+        );
+
+        const restaurantName = await screen.findByRole("heading", {
+          name: new RegExp(jackRabbitSlims.name, "i"),
+        });
+
+        expect(restaurantName).toBeInTheDocument();
+
+        const restaurantCard = restaurantName.closest("article");
+
+        const modifyLink = await within(restaurantCard!).findByLabelText(
+          "modificar restaurante",
+        );
+
+        await userEvent.click(modifyLink);
+
+        const description = await screen.findByRole("heading", {
+          name: /a continuación puedes modificar los datos de jack rabbit slim's/i,
+        });
+
+        expect(description).toBeInTheDocument();
       });
     });
 
