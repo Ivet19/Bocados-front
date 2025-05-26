@@ -19,7 +19,7 @@ describe("Given the Modal component", () => {
       expect(modal).toBeInTheDocument();
     });
 
-    test("Then it should show a closing button with an image of a 'cross icon' inside", () => {
+    test("Then it should show a closing button", () => {
       const closingButton = /cerrar mensaje/i;
 
       render(<Modal action={action} isSuccess={true} text={modalText} />);
