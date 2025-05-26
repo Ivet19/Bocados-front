@@ -30,7 +30,8 @@ const Modal: React.FC<ModalProps> = ({ isSuccess, text, action }) => {
             <img
               className="cross-icon"
               src="/icons/Close-icon.svg"
-              alt="cross icon"
+              alt=""
+              aria-hidden={true}
             />
           </Button>
           <span className={`modal-text ${modalTextModifier}`}>{text}</span>

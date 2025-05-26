@@ -84,7 +84,7 @@ describe("Given the RestaurantsPage component", () => {
       });
     });
 
-    describe("And the user clicks the delete button with a trash icon inside in Jack Rabbit Slim's restaurant", () => {
+    describe("And the user clicks the delete button in Jack Rabbit Slim's restaurant", () => {
       test("Then it should delete Jack Rabbit Slim's restaurant and not show it anymore", async () => {
         render(
           <Provider store={store}>

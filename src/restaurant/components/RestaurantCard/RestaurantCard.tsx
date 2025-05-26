@@ -43,7 +43,13 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
           classModifierName="visit-state"
           aria-label={toggleButtonAriaLabel}
         >
-          <img src={checkIcon} width={35} height={35} />
+          <img
+            src={checkIcon}
+            width={35}
+            height={35}
+            alt=""
+            aria-hidden={true}
+          />
         </Button>
       </div>
       <div className="restaurant__image-container">
@@ -105,7 +111,13 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
             }}
             aria-label="borrar restaurante"
           >
-            <img src="/icons/Trash-icon.svg" width={18} height={20} />
+            <img
+              src="/icons/Trash-icon.svg"
+              alt=""
+              aria-hidden={true}
+              width={18}
+              height={20}
+            />
           </Button>
           <Link
             to={`modify-restaurant/${id}`}
@@ -114,7 +126,8 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
           >
             <img
               src="/icons/Edit-icon.svg"
-              alt="edit icon"
+              alt=""
+              aria-hidden={true}
               width={18}
               height={20}
             />
