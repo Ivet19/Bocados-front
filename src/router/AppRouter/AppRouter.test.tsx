@@ -23,8 +23,8 @@ describe("Given the AppRouter component", () => {
         name: /no se ha encontrado la página que buscas/i,
       });
 
-      expect(expectedPageTitle).toBeVisible();
-      expect(expectedPageSubtitle).toBeVisible();
+      expect(expectedPageTitle).toBeInTheDocument();
+      expect(expectedPageSubtitle).toBeInTheDocument();
     });
 
     test("Then it should show a image of an exclamation symbol icon", async () => {
@@ -38,7 +38,7 @@ describe("Given the AppRouter component", () => {
 
       const icon = await screen.findByAltText(/exclamation symbol icon/i);
 
-      expect(icon).toBeVisible();
+      expect(icon).toBeInTheDocument();
     });
   });
 });

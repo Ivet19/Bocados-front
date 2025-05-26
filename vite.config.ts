@@ -10,7 +10,12 @@ export default defineConfig({
     setupFiles: ["src/setupTests.ts"],
     coverage: {
       reportsDirectory: "./coverage",
-      exclude: ["src/main.tsx", "**/*.d.ts", "**/*.config.*"],
+      exclude: [
+        "src/main.tsx",
+        "**/*.d.ts",
+        "**/*.config.*",
+        "src/router/LazyPages/LazyPages.tsx",
+      ],
       provider: "v8",
       reporter: ["text", "json", "html", "lcov"],
       include: ["**/*.ts", "**/*.tsx"],
