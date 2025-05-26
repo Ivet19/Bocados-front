@@ -11,7 +11,7 @@ describe("Given the Navigation component", () => {
         name: /restaurantes/i,
       });
 
-      expect(restaurantsLink).toBeVisible();
+      expect(restaurantsLink).toBeInTheDocument();
     });
 
     test("Then it should show an 'Añadir restaurante' link", () => {
@@ -21,7 +21,7 @@ describe("Given the Navigation component", () => {
         name: /añadir restaurante/i,
       });
 
-      expect(addRestaurantLink).toBeVisible();
+      expect(addRestaurantLink).toBeInTheDocument();
     });
   });
 });

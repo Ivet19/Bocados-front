@@ -45,7 +45,7 @@ export const handlers = [
     });
   }),
 
-  http.get(`${apiUrl}/restaurants/${jackRabbitSlimsDto._id}`, () => {
+  http.get(`${apiUrl}/restaurants/${jackRabbitSlims.id}`, () => {
     return HttpResponse.json<{ restaurant: RestaurantDto }>({
       restaurant: jackRabbitSlimsDto,
     });

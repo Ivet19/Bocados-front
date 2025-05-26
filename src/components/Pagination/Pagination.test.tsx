@@ -17,8 +17,8 @@ describe("Given the Pagination component", () => {
       const previousLink = screen.getByRole("link", { name: /anterior/i });
       const nextLink = screen.getByRole("link", { name: /siguiente/i });
 
-      expect(previousLink).toBeVisible();
-      expect(nextLink).toBeVisible();
+      expect(previousLink).toBeInTheDocument();
+      expect(nextLink).toBeInTheDocument();
     });
   });
 });

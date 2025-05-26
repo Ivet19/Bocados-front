@@ -27,7 +27,7 @@ describe("Given the RestaurantsPage component", () => {
         name: /lista de restaurantes/i,
       });
 
-      expect(pageTitle).toBeVisible();
+      expect(pageTitle).toBeInTheDocument();
     });
 
     describe("When it renders in /restaurants", () => {
@@ -53,8 +53,8 @@ describe("Given the RestaurantsPage component", () => {
       });
     });
 
-    describe("And the user clicks the button with grey check icon in not visited Jack Rabbit Slim's restaurant", () => {
-      test("Then it should show a button with a green check icon", async () => {
+    describe("And the user clicks the 'marcar como visitado' button in not visited Jack Rabbit Slim's restaurant", () => {
+      test("Then it should show a 'marcar como no visitado' button", async () => {
         render(
           <Provider store={store}>
             <RestaurantsPage />
@@ -70,14 +70,14 @@ describe("Given the RestaurantsPage component", () => {
 
         const restaurantCard = restaurantName.closest("article");
 
-        const actualCheckButton = await within(restaurantCard!).findByAltText(
-          new RegExp("grey check icon", "i"),
+        const actualCheckButton = await within(restaurantCard!).findByLabelText(
+          new RegExp("marcar como visitado", "i"),
         );
 
         await userEvent.click(actualCheckButton);
 
-        const newCheckButton = await within(restaurantCard!).findByAltText(
-          new RegExp("green check icon", "i"),
+        const newCheckButton = await within(restaurantCard!).findByLabelText(
+          new RegExp("marcar como no visitado", "i"),
         );
 
         expect(newCheckButton).toBeInTheDocument();

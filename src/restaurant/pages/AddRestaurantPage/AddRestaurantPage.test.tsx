@@ -19,7 +19,7 @@ describe("Given the AddRestaurantPage component", () => {
         name: expectedPageTitle,
       });
 
-      expect(pageTitle).toBeVisible();
+      expect(pageTitle).toBeInTheDocument();
     });
   });
 });

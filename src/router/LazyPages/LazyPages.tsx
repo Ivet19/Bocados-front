@@ -16,3 +16,8 @@ export const LazyRestaurantDetailPage = lazy(
   () =>
     import("../../restaurant/pages/RestaurantDetailPage/RestaurantDetailPage"),
 );
+
+export const LazyModifyRestaurantPage = lazy(
+  () =>
+    import("../../restaurant/pages/ModifyRestaurantPage/ModifyRestaurantPage"),
+);

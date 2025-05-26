@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from "react-router";
 import App from "../../components/App/App";
 import {
   LazyAddRestaurantPage,
+  LazyModifyRestaurantPage,
   LazyNotfoundPage,
   LazyRestaurantDetailPage,
   LazyRestaurantsPage,
@@ -17,6 +18,10 @@ const AppRouter: React.FC = () => {
         <Route
           path="restaurants/:restaurantId"
           element={<LazyRestaurantDetailPage />}
+        />
+        <Route
+          path="restaurants/modify-restaurant/:restaurantId"
+          element={<LazyModifyRestaurantPage />}
         />
         <Route path="*" element={<LazyNotfoundPage />} />
       </Route>

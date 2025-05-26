@@ -79,14 +79,14 @@ class RestaurantClient implements RestaurantClientStructure {
 
   public updateRestaurant = async (
     restaurantId: string,
-    restaurantData: RestaurantData,
+    restaurant: RestaurantDto,
   ): Promise<Restaurant> => {
     const response = await fetch(
       `${this.apiUrl}/restaurants/modify-restaurant/${restaurantId}`,
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(restaurantData),
+        body: JSON.stringify({ restaurant: restaurant }),
       },
     );
 

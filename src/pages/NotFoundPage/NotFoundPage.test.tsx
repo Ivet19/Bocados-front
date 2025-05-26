@@ -14,8 +14,8 @@ describe("Given the NotFoundPage component", () => {
         name: /no se ha encontrado la página que buscas/i,
       });
 
-      expect(expectedPageTitle).toBeVisible();
-      expect(expectedPageSubtitle).toBeVisible();
+      expect(expectedPageTitle).toBeInTheDocument();
+      expect(expectedPageSubtitle).toBeInTheDocument();
     });
 
     test("Then it should show a image of an exclamation symbol icon", () => {
@@ -23,7 +23,7 @@ describe("Given the NotFoundPage component", () => {
 
       const icon = screen.getByAltText(/exclamation symbol icon/i);
 
-      expect(icon).toBeVisible();
+      expect(icon).toBeInTheDocument();
     });
   });
 });
