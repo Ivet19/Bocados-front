@@ -1,9 +1,0 @@
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-}
-
-.page-header__title {
-  font-size: 1.75rem;
-}

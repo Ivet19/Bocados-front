@@ -1,15 +1,35 @@
 import RestaurantForm from "../../components/RestaurantForm/RestaurantForm";
 import useRestaurants from "../../hooks/useRestaurants";
-import "./AddRestaurantPage.css";
+import type { RestaurantData } from "../../types";
+import "../pages.css";
 
 const AddRestaurantPage: React.FC = () => {
   const { createRestaurant } = useRestaurants();
+
+  const initialRestaurantData: RestaurantData = {
+    name: "",
+    adress: "",
+    foodType: "",
+    imageUrl: "",
+    description: "",
+    isVisited: false,
+    servingsAmount: undefined,
+    waitTime: undefined,
+    customerService: undefined,
+    priceCategory: undefined,
+    rating: undefined,
+    visitDate: "",
+  };
+
   return (
-    <div className="form">
-      <header className="page-header">
-        <h2 className="page-header__title">Añadir restaurante</h2>
+    <div className="page">
+      <header className="page__header">
+        <h2 className="page__title">Añadir restaurante</h2>
       </header>
-      <RestaurantForm action={createRestaurant} />
+      <RestaurantForm
+        addAction={createRestaurant}
+        initialRestaurantData={initialRestaurantData}
+      />
     </div>
   );
 };

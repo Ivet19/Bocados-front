@@ -1,4 +1,8 @@
-import type { RestaurantsData, RestaurantsDataDto } from "../client/types";
+import type {
+  ModifiedRestaurant,
+  RestaurantsData,
+  RestaurantsDataDto,
+} from "../client/types";
 import type { Restaurant } from "../types";
 import type { RestaurantDto } from "./typesDto";
 
@@ -30,10 +34,10 @@ export const mapRestaurantDtoToRestaurant = ({
   _id,
   name,
   visitDate,
-  ...restaurantsDto
+  ...restaurantDto
 }: RestaurantDto): Restaurant => {
   const restaurant: Restaurant = {
-    ...restaurantsDto,
+    ...restaurantDto,
     id: _id,
     name,
     imageAlt: `the dining area of ${name} restaurant`,
@@ -48,4 +52,16 @@ export const mapRestaurantDtoToRestaurant = ({
   }
 
   return restaurant;
+};
+
+export const mapModiefiedRestaurantToRestaurantDto = ({
+  id,
+  ...restaurant
+}: ModifiedRestaurant): RestaurantDto => {
+  const restaurantDto: RestaurantDto = {
+    ...restaurant,
+    _id: id,
+  };
+
+  return restaurantDto;
 };

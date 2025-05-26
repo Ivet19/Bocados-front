@@ -1,30 +1,33 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import Button from "../../../components/Button/Button";
-import type { RestaurantData } from "../../types";
+import type { Restaurant, RestaurantData } from "../../types";
 import "./RestaurantForm.css";
+import { mapModiefiedRestaurantToRestaurantDto } from "../../dto/mappers";
+import type { ModifiedRestaurant } from "../../client/types";
+import type { RestaurantDto } from "../../dto/typesDto";
 
 interface RestaurantFormProps {
-  action: (restaurantData: RestaurantData) => Promise<void>;
+  addAction?: (restaurantData: RestaurantData) => Promise<void>;
+  modifyAction?: (
+    restaurantId: string,
+    restaurant: RestaurantDto,
+  ) => Promise<void>;
+  restaurantToModify?: Restaurant;
+  restaurantId?: string;
+  initialRestaurantData: RestaurantData;
 }
 
-const RestaurantForm: React.FC<RestaurantFormProps> = ({ action }) => {
-  const initialRestaurantData: RestaurantData = {
-    name: "",
-    adress: "",
-    foodType: "",
-    imageUrl: "",
-    description: "",
-    isVisited: false,
-    servingsAmount: undefined,
-    waitTime: undefined,
-    customerService: undefined,
-    priceCategory: undefined,
-    rating: undefined,
-    visitDate: "",
-  };
-
-  const [restaurantData, setRestaurantData] = useState(initialRestaurantData);
+const RestaurantForm: React.FC<RestaurantFormProps> = ({
+  addAction,
+  modifyAction,
+  restaurantToModify,
+  restaurantId,
+  initialRestaurantData,
+}) => {
+  const [restaurantData, setRestaurantData] = useState<RestaurantData>(
+    initialRestaurantData,
+  );
 
   const isVisited = restaurantData.isVisited === true;
 
@@ -91,25 +94,45 @@ const RestaurantForm: React.FC<RestaurantFormProps> = ({ action }) => {
   ): Promise<void> => {
     event.preventDefault();
 
-    const cleanedData = { ...restaurantData };
+    const restaurantCleanedData = { ...restaurantData };
 
-    if (!cleanedData.isVisited) {
-      delete cleanedData.visitDate;
-      delete cleanedData.servingsAmount;
-      delete cleanedData.waitTime;
-      delete cleanedData.customerService;
-      delete cleanedData.priceCategory;
-      delete cleanedData.rating;
+    if (!restaurantCleanedData.isVisited) {
+      delete restaurantCleanedData.visitDate;
+      delete restaurantCleanedData.servingsAmount;
+      delete restaurantCleanedData.waitTime;
+      delete restaurantCleanedData.customerService;
+      delete restaurantCleanedData.priceCategory;
+      delete restaurantCleanedData.rating;
     } else {
-      if (!cleanedData.visitDate) delete cleanedData.visitDate;
-      if (!cleanedData.servingsAmount) delete cleanedData.servingsAmount;
-      if (!cleanedData.waitTime) delete cleanedData.waitTime;
-      if (!cleanedData.customerService) delete cleanedData.customerService;
-      if (!cleanedData.priceCategory) delete cleanedData.priceCategory;
-      if (cleanedData.rating === 0) delete cleanedData.rating;
+      if (!restaurantCleanedData.visitDate) {
+        delete restaurantCleanedData.visitDate;
+      }
+      if (!restaurantCleanedData.servingsAmount) {
+        delete restaurantCleanedData.servingsAmount;
+      }
+      if (!restaurantCleanedData.waitTime) {
+        delete restaurantCleanedData.waitTime;
+      }
+      if (!restaurantCleanedData.customerService) {
+        delete restaurantCleanedData.customerService;
+      }
+      if (!restaurantCleanedData.priceCategory) {
+        delete restaurantCleanedData.priceCategory;
+      }
+      if (restaurantCleanedData.rating === 0) {
+        delete restaurantCleanedData.rating;
+      }
     }
 
-    await action(cleanedData);
+    if (restaurantToModify && restaurantId && modifyAction) {
+      const id = restaurantId;
+      const restaurant: ModifiedRestaurant = { ...restaurantCleanedData, id };
+      const restaurantDto = mapModiefiedRestaurantToRestaurantDto(restaurant);
+      await modifyAction(restaurantId, restaurantDto);
+    } else if (addAction) {
+      await addAction(restaurantCleanedData);
+    }
+
     navigate("/");
   };
 
@@ -117,7 +140,9 @@ const RestaurantForm: React.FC<RestaurantFormProps> = ({ action }) => {
     <form className="restaurant-form" onSubmit={onSubmitForm}>
       <div className="restaurant-form__groups">
         <h3 className="restaurant-form__info">
-          Completa los siguientes campos para añadir un nuevo restaurante:
+          {restaurantToModify
+            ? `A continuación puedes modificar los datos de ${restaurantToModify.name}:`
+            : "Completa los siguientes campos para añadir un nuevo restaurante:"}
         </h3>
         <div className="restaurant-form__group">
           <label htmlFor="name" className="restaurant-form__text">
@@ -193,7 +218,6 @@ const RestaurantForm: React.FC<RestaurantFormProps> = ({ action }) => {
             className="restaurant-form__checkbox"
             checked={isVisited}
             onChange={changeIsVisited}
-            required
           />
         </div>
         <span className="restaurant-form__info restaurant-form__info--optionals">
@@ -314,7 +338,7 @@ const RestaurantForm: React.FC<RestaurantFormProps> = ({ action }) => {
         classModifierName="form"
         disabled={!isFormValid}
       >
-        Añadir
+        {restaurantToModify ? "Guardar" : "Añadir"}
       </Button>
     </form>
   );

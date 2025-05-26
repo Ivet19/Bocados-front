@@ -3,9 +3,10 @@ import { useSearchParams } from "react-router";
 import useRestaurants from "../../hooks/useRestaurants";
 import Pagination from "../../../components/Pagination/Pagination";
 import RestaurantsList from "../../components/RestaurantsList/RestaurantsList";
-import "./RestaurantsPage.css";
 import Loading from "../../../components/Loading/Loading";
 import useLoading from "../../../hooks/hooks/useLoading";
+import "./RestaurantsPage.css";
+import "../pages.css";
 
 const RestaurantsPage: React.FC = () => {
   const {
@@ -35,9 +36,9 @@ const RestaurantsPage: React.FC = () => {
 
   return (
     <>
-      <header className="page-header">
-        <h2 className="page-header__title"> Lista de restaurantes</h2>
-        <span className="page-header__counter">
+      <header className="page__header">
+        <h2 className="page__title"> Lista de restaurantes</h2>
+        <span className="page__counter">
           {`Total: ${restaurants.length} / ${restaurantsTotal}`}
         </span>
       </header>
