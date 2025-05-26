@@ -7,7 +7,7 @@ export interface RestaurantClientStructure {
   toggleRestaurantById: (RestaurantId: string) => Promise<Restaurant>;
   updateRestaurant: (
     restaurantId: string,
-    restaurantData: RestaurantData,
+    restaurant: RestaurantDto,
   ) => Promise<Restaurant>;
   addRestaurant: (restaurantData: RestaurantData) => Promise<Restaurant>;
   deleteRestaurant: (restaurantId: string) => Promise<Restaurant>;
@@ -25,3 +25,5 @@ export type RestaurantsData = Omit<RestaurantsDataDto, "restaurants"> & {
 export type ResponseRestaurantDto = {
   restaurant: RestaurantDto;
 };
+
+export type ModifiedRestaurant = Omit<Restaurant, "imageAlt">;
