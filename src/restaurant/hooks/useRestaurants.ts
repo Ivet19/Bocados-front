@@ -12,6 +12,7 @@ import {
 } from "../slice/restaurantSlice";
 import useModal from "../../hooks/hooks/useModal";
 import type { RestaurantData } from "../types";
+import type { RestaurantDto } from "../dto/typesDto";
 
 const useRestaurants = () => {
   const { startLoading, stopLoading } = useLoading();
@@ -96,12 +97,12 @@ const useRestaurants = () => {
   const modifyRestaurant = useCallback(
     async (
       restaurantId: string,
-      restaurantData: RestaurantData,
+      restaurantDto: RestaurantDto,
     ): Promise<void> => {
       try {
         const restaurant = await restaurantClient.updateRestaurant(
           restaurantId,
-          restaurantData,
+          restaurantDto,
         );
 
         const action = modifyRestaurantActionCreator(restaurant);

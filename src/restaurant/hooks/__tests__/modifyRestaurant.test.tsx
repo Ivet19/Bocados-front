@@ -5,10 +5,7 @@ import type { RestaurantState } from "../../slice/types";
 import { renderHook } from "@testing-library/react";
 import useRestaurants from "../useRestaurants";
 import { act } from "react";
-import {
-  threeBroomsticksDto,
-  threeBroomsticksDtoData,
-} from "../../dto/fixturesDto";
+import { threeBroomsticksDto } from "../../dto/fixturesDto";
 import type { ModalState } from "../../../slices/types";
 
 describe("Given the modifyRestaurant function of useRestaurants", () => {
@@ -44,7 +41,7 @@ describe("Given the modifyRestaurant function of useRestaurants", () => {
       await act(() => {
         result.current.modifyRestaurant(
           threeBroomsticksDto._id,
-          threeBroomsticksDtoData,
+          threeBroomsticksDto,
         );
       });
 

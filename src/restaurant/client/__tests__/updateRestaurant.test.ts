@@ -1,12 +1,7 @@
 import { http, HttpResponse } from "msw";
 import { server } from "../../mocks/node";
 import RestaurantClient from "../RestaurantClient";
-import {
-  kelpShakeDto,
-  kelpShakeDtoData,
-  moesTavernDto,
-  moesTavernDtoData,
-} from "../../dto/fixturesDto";
+import { kelpShakeDto, moesTavernDto } from "../../dto/fixturesDto";
 
 describe("Given the updateRestaurant method of restaurantClient", () => {
   describe("When it's called with the modified X restaurant data and id", () => {
@@ -16,7 +11,7 @@ describe("Given the updateRestaurant method of restaurantClient", () => {
 
       const updatedRestaurant = await restaurantClient.updateRestaurant(
         kelpShakeDto._id,
-        kelpShakeDtoData,
+        kelpShakeDto,
       );
 
       expect(updatedRestaurant).toMatchObject({ name: expectedRestaurantName });
@@ -40,7 +35,7 @@ describe("Given the updateRestaurant method of restaurantClient", () => {
 
       const updatedRestaurant = restaurantClient.updateRestaurant(
         moesTavernDto._id,
-        moesTavernDtoData,
+        moesTavernDto,
       );
 
       expect(updatedRestaurant).rejects.toThrow(expectedErrorMessage);
