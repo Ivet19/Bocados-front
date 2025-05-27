@@ -226,4 +226,33 @@ describe("Given the Layout component", () => {
       });
     });
   });
+
+  describe("When it renders in path /restaurants/662a1c9d7f8b9f001a1b0011", () => {
+    describe("And the user clicks the 'modificar' link", () => {
+      test("Then it should show 'A continuación puedes modificar los datos de Jack Rabbit Slim's' inside a heading", async () => {
+        render(
+          <Provider store={store}>
+            <MemoryRouter
+              initialEntries={[`/restaurants/${jackRabbitSlims.id}`]}
+            >
+              <Layout />
+              <AppTestRouter />
+            </MemoryRouter>
+          </Provider>,
+        );
+
+        const modifyLink = await screen.findByRole("link", {
+          name: /modificar/i,
+        });
+
+        await userEvent.click(modifyLink);
+
+        const pageTitle = await screen.findByRole("heading", {
+          name: /a continuación puedes modificar los datos de jack rabbit slim's/i,
+        });
+
+        expect(pageTitle).toBeInTheDocument();
+      });
+    });
+  });
 });
