@@ -99,33 +99,24 @@ const RestaurantForm: React.FC<RestaurantFormProps> = ({
 
     const restaurantCleanedData = { ...restaurantData };
 
-    if (!restaurantCleanedData.isVisited) {
-      delete restaurantCleanedData.visitDate;
-      delete restaurantCleanedData.servingsAmount;
-      delete restaurantCleanedData.waitTime;
-      delete restaurantCleanedData.customerService;
-      delete restaurantCleanedData.priceCategory;
-      delete restaurantCleanedData.rating;
-    } else {
-      if (!restaurantCleanedData.visitDate) {
-        delete restaurantCleanedData.visitDate;
+    const optionalData: (keyof RestaurantData)[] = [
+      "visitDate",
+      "servingsAmount",
+      "waitTime",
+      "customerService",
+      "priceCategory",
+      "rating",
+    ];
+
+    optionalData.forEach((property) => {
+      if (
+        !restaurantData.isVisited ||
+        restaurantCleanedData[property] === "" ||
+        restaurantCleanedData[property] === undefined
+      ) {
+        delete restaurantCleanedData[property];
       }
-      if (!restaurantCleanedData.servingsAmount) {
-        delete restaurantCleanedData.servingsAmount;
-      }
-      if (!restaurantCleanedData.waitTime) {
-        delete restaurantCleanedData.waitTime;
-      }
-      if (!restaurantCleanedData.customerService) {
-        delete restaurantCleanedData.customerService;
-      }
-      if (!restaurantCleanedData.priceCategory) {
-        delete restaurantCleanedData.priceCategory;
-      }
-      if (restaurantCleanedData.rating === undefined) {
-        delete restaurantCleanedData.rating;
-      }
-    }
+    });
 
     if (restaurantToModify && restaurantId && modifyAction) {
       const id = restaurantId;
