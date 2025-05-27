@@ -12,3 +12,8 @@ export interface ShowModalPayload {
 export interface LoadingState {
   isLoading: boolean;
 }
+
+export interface UiState {
+  modal: ModalState;
+  loading: LoadingState;
+}

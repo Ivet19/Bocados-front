@@ -5,7 +5,7 @@ import { pizzaPlanet } from "../../fixtures";
 import type { RestaurantState } from "../../slice/types";
 import { pizzaPlanetDto } from "../../dto/fixturesDto";
 import setupStore from "../../../store/setUpStore";
-import type { ModalState } from "../../../ui/slices/types";
+import type { ModalState } from "../../../ui/uiSlice/types";
 
 describe("Given the removeRestaurant function", () => {
   describe("When it's called with Pizza Planet restaurant id", () => {

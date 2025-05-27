@@ -5,7 +5,7 @@ import useRestaurants from "../useRestaurants";
 import { moesTavern } from "../../fixtures";
 import type { RestaurantState } from "../../slice/types";
 import setupStore from "../../../store/setUpStore";
-import type { ModalState } from "../../../ui/slices/types";
+import type { ModalState } from "../../../ui/uiSlice/types";
 
 describe("Given the loadRestaurants function", () => {
   describe("When it's called with page number 2", () => {
