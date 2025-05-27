@@ -1,11 +1,11 @@
 import { useCallback } from "react";
-import { useAppDispatch, useAppSelector } from "../../store/hooks.ts";
+import type { UseModalStructure } from "../types.ts";
 import {
   hideModalActionCreator,
   showModalActionCreator,
-} from "../../slices/slices/modalSlice.ts";
-import type { UseModalStructure } from "../types.ts";
-import type { ShowModalPayload } from "../../slices/types.ts";
+} from "../../../slices/slices/modalSlice.ts";
+import type { ShowModalPayload } from "../../../slices/types.ts";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks.ts";
 
 const useModal = (): UseModalStructure => {
   const modalState = useAppSelector((state) => state.modalSlice);

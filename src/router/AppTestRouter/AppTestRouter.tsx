@@ -3,7 +3,7 @@ import AddRestaurantPage from "../../restaurant/pages/AddRestaurantPage/AddResta
 import RestaurantsPage from "../../restaurant/pages/RestaurantsPage/RestaurantsPage";
 import RestaurantDetailPage from "../../restaurant/pages/RestaurantDetailPage/RestaurantDetailPage";
 import ModifyRestaurantPage from "../../restaurant/pages/ModifyRestaurantPage/ModifyRestaurantPage";
-import App from "../../components/App/App";
+import App from "../../ui/components/App/App";
 
 const AppTestRouter: React.FC = () => {
   return (

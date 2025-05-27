@@ -1,7 +1,7 @@
 import { renderHook } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { act } from "react";
-import store from "../../store/store";
+import store from "../../../store/store";
 import useModal from "../hooks/useModal";
 
 describe("Given the hideModal method from useModel hook", () => {

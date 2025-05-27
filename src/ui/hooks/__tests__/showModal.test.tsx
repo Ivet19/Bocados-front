@@ -2,7 +2,7 @@ import { act } from "react";
 import { Provider } from "react-redux";
 import { renderHook } from "@testing-library/react";
 import useModal from "../hooks/useModal";
-import store from "../../store/store";
+import store from "../../../store/store";
 
 describe("Given the showModal method from useModal", () => {
   describe("When it receives a true and 'Tutto benne' text", () => {

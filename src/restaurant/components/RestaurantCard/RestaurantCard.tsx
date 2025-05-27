@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import Button from "../../../components/Button/Button";
+import Button from "../../../ui/components/Button/Button";
 import useRestaurants from "../../hooks/useRestaurants";
 import type { Restaurant } from "../../types";
 import "./RestaurantCard.css";

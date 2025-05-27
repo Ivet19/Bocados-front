@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import Button from "../../../components/Button/Button";
+import Button from "../../../ui/components/Button/Button";
 import type { Restaurant, RestaurantData } from "../../types";
 import "./RestaurantForm.css";
 import { mapModiefiedRestaurantToRestaurantDto } from "../../dto/mappers";

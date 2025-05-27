@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
 import Pagination from "./Pagination";
-import { moviesRestaurants } from "../../restaurant/fixtures";
+import { moviesRestaurants } from "../../../restaurant/fixtures";
 
 describe("Given the Pagination component", () => {
   describe("When it renders", () => {

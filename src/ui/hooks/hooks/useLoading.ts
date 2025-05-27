@@ -1,10 +1,10 @@
 import { useCallback } from "react";
-import {
-  stopLoadingActionCreator,
-  startLoadingActionCreator,
-} from "../../slices/slices/loadingSlice";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import type { UseLoadingStructure } from "../types";
+import {
+  startLoadingActionCreator,
+  stopLoadingActionCreator,
+} from "../../../slices/slices/loadingSlice";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 
 const useLoading = (): UseLoadingStructure => {
   const loadingState = useAppSelector((state) => state.loadingSlice);

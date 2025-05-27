@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useSearchParams } from "react-router";
 import useRestaurants from "../../hooks/useRestaurants";
-import Pagination from "../../../components/Pagination/Pagination";
+import Pagination from "../../../ui/components/Pagination/Pagination";
 import RestaurantsList from "../../components/RestaurantsList/RestaurantsList";
-import Loading from "../../../components/Loading/Loading";
-import useLoading from "../../../hooks/hooks/useLoading";
+import Loading from "../../../ui/components/Loading/Loading";
+import useLoading from "../../../ui/hooks/hooks/useLoading";
 import "./RestaurantsPage.css";
 import "../pages.css";
 
