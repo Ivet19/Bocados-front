@@ -1,14 +1,15 @@
 import { useCallback } from "react";
 import type { UseModalStructure } from "../types.ts";
+
+import type { ShowModalPayload } from "../../uiSlice/types.ts";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks.ts";
 import {
   hideModalActionCreator,
   showModalActionCreator,
-} from "../../slices/slices/modalSlice.ts";
-import type { ShowModalPayload } from "../../slices/types.ts";
-import { useAppDispatch, useAppSelector } from "../../../store/hooks.ts";
+} from "../../uiSlice/uiSlice.ts";
 
 const useModal = (): UseModalStructure => {
-  const modalState = useAppSelector((state) => state.modalSlice);
+  const modalState = useAppSelector((state) => state.uiSlice.modal);
 
   const dispatch = useAppDispatch();
 

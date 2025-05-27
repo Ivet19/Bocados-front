@@ -1,4 +1,4 @@
-import type { LoadingState, ModalState } from "../slices/types";
+import type { LoadingState, ModalState } from "../uiSlice/types";
 
 export interface UseModalStructure {
   modalState: ModalState;
