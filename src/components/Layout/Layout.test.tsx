@@ -5,9 +5,14 @@ import userEvent from "@testing-library/user-event";
 import Layout from "./Layout";
 import store from "../../store/store";
 import AppTestRouter from "../../router/AppTestRouter/AppTestRouter";
-import "./Layout.css";
-import { jackRabbitSlims } from "../../restaurant/fixtures";
+import { jackRabbitSlims, kelpShake } from "../../restaurant/fixtures";
 import { jackRabbitSlimsDto } from "../../restaurant/dto/fixturesDto";
+import type { RestaurantState } from "../../restaurant/slice/types";
+import setupStore from "../../store/setUpStore";
+import "./Layout.css";
+
+window.scrollTo = vitest.fn();
+const user = userEvent.setup();
 
 describe("Given the Layout component", () => {
   describe("When it renders", () => {
@@ -252,6 +257,97 @@ describe("Given the Layout component", () => {
         });
 
         expect(pageTitle).toBeInTheDocument();
+      });
+    });
+  });
+
+  describe("When it renders in path /restaurants/modify-restaurant/662a1c9d7f8b9f001a1b0011 to modify Kelp Shake visited restaurant", () => {
+    const initialState: { restaurantStateData: RestaurantState } = {
+      restaurantStateData: {
+        restaurantsData: {
+          restaurants: [kelpShake, jackRabbitSlims],
+          restaurantsTotal: 2,
+        },
+      },
+    };
+    const testStore = setupStore(initialState);
+    describe("And the user modifies the restaurant's name and clicks the save button to save the changes", () => {
+      test("Then it should show 'Lista de restaurantes' inside a heading", async () => {
+        render(
+          <Provider store={testStore}>
+            <MemoryRouter
+              initialEntries={[
+                `/restaurants/modify-restaurant/${kelpShake.id}`,
+              ]}
+            >
+              <AppTestRouter />
+            </MemoryRouter>
+          </Provider>,
+        );
+
+        const nameTextBox = screen.getByLabelText(/nombre/i);
+
+        await user.clear(nameTextBox);
+
+        await user.type(nameTextBox, "McBobEsponja");
+
+        const saveButton = await screen.findByRole("button", {
+          name: /guardar/i,
+        });
+
+        await user.click(saveButton);
+
+        const pageTitle = await screen.findByRole("heading", {
+          name: /lista de restaurantes/i,
+        });
+
+        expect(pageTitle).toBeInTheDocument();
+      });
+    });
+
+    describe("When it renders in path /restaurants/modify-restaurant/662a1c9d7f8b9f001a1b0011 to modify Jack Rabbit Slim's not visited restaurant", () => {
+      const initialState: { restaurantStateData: RestaurantState } = {
+        restaurantStateData: {
+          restaurantsData: {
+            restaurants: [kelpShake, jackRabbitSlims],
+            restaurantsTotal: 2,
+          },
+        },
+      };
+      const testStore = setupStore(initialState);
+      describe("And the user modifies the restaurant's name and clicks the save button to save the changes", () => {
+        test("Then it should show 'Lista de restaurantes' inside a heading", async () => {
+          render(
+            <Provider store={testStore}>
+              <MemoryRouter
+                initialEntries={[
+                  `/restaurants/modify-restaurant/${jackRabbitSlims.id}`,
+                ]}
+              >
+                <AppTestRouter />
+              </MemoryRouter>
+            </Provider>,
+          );
+
+          const foodTypeTextBox =
+            await screen.findByLabelText(/tipo de comida/i);
+
+          await user.clear(foodTypeTextBox);
+
+          await user.type(foodTypeTextBox, "Desayuno americano");
+
+          const saveButton = await screen.findByRole("button", {
+            name: /guardar/i,
+          });
+
+          await user.click(saveButton);
+
+          const pageTitle = await screen.findByRole("heading", {
+            name: /lista de restaurantes/i,
+          });
+
+          expect(pageTitle).toBeInTheDocument();
+        });
       });
     });
   });

@@ -99,6 +99,15 @@ export const handlers = [
     },
   ),
 
+  http.put(
+    `${apiUrl}/restaurants/modify-restaurant/${jackRabbitSlims.id}`,
+    () => {
+      return HttpResponse.json<{ restaurant: RestaurantDto }>({
+        restaurant: visitedJackRabbitSlimsDto,
+      });
+    },
+  ),
+
   http.post(`${apiUrl}/restaurants`, () => {
     return HttpResponse.json<{ restaurant: RestaurantDto }>({
       restaurant: threeBroomsticksDto,
