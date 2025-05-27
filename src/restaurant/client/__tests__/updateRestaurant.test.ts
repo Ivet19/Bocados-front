@@ -4,8 +4,8 @@ import RestaurantClient from "../RestaurantClient";
 import { kelpShakeDto, moesTavernDto } from "../../dto/fixturesDto";
 
 describe("Given the updateRestaurant method of restaurantClient", () => {
-  describe("When it's called with the modified X restaurant data and id", () => {
-    test("Then it should return X restaurant", async () => {
+  describe("When it's called with the modified Kelp Shake restaurant and its id", () => {
+    test("Then it should return Kelp Shake modified restaurant", async () => {
       const expectedRestaurantName = /mcbobesponja/i;
       const restaurantClient = new RestaurantClient();
 

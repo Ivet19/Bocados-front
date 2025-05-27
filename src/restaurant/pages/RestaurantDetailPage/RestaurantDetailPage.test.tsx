@@ -55,6 +55,22 @@ describe("Given the RestaurantDetailPage component", () => {
 
       expect(restaurantDescription).toBeInTheDocument();
     });
+
+    test("Then it should show a 'modificar' link", async () => {
+      render(
+        <Provider store={store}>
+          <MemoryRouter initialEntries={[`/restaurants/${jackRabbitSlims.id}`]}>
+            <AppTestRouter />
+          </MemoryRouter>
+        </Provider>,
+      );
+
+      const modifyLink = await screen.getByRole("link", {
+        name: /modificar/i,
+      });
+
+      expect(modifyLink).toBeInTheDocument();
+    });
   });
 
   describe("When it receives visited Leacky Cauldron restaurant id", () => {
