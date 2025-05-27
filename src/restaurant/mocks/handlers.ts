@@ -13,7 +13,13 @@ import {
   visitedJackRabbitSlimsDto,
   threeBroomsticksDto,
 } from "../dto/fixturesDto";
-import { jackRabbitSlims } from "../fixtures";
+import {
+  jackRabbitSlims,
+  kelpShake,
+  leakyCauldron,
+  moesTavern,
+  threeBroomsticks,
+} from "../fixtures";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -51,15 +57,21 @@ export const handlers = [
     });
   }),
 
-  http.get(`${apiUrl}/restaurants/${leakyCauldronDto._id}`, () => {
+  http.get(`${apiUrl}/restaurants/${leakyCauldron.id}`, () => {
     return HttpResponse.json<{ restaurant: RestaurantDto }>({
       restaurant: leakyCauldronDto,
     });
   }),
 
-  http.get(`${apiUrl}/restaurants/${moesTavernDto._id}`, () => {
+  http.get(`${apiUrl}/restaurants/${moesTavern.id}`, () => {
     return HttpResponse.json<{ restaurant: RestaurantDto }>({
       restaurant: moesTavernDto,
+    });
+  }),
+
+  http.get(`${apiUrl}/restaurants/${kelpShake.id}`, () => {
+    return HttpResponse.json<{ restaurant: RestaurantDto }>({
+      restaurant: kelpShakeDto,
     });
   }),
 
@@ -72,20 +84,26 @@ export const handlers = [
     },
   ),
 
+  http.put(`${apiUrl}/restaurants/modify-restaurant/${kelpShake.id}`, () => {
+    return HttpResponse.json<{ restaurant: RestaurantDto }>({
+      restaurant: updatedKelpShakeDto,
+    });
+  }),
+
   http.put(
-    `${apiUrl}/restaurants/modify-restaurant/${kelpShakeDto._id}`,
+    `${apiUrl}/restaurants/modify-restaurant/${threeBroomsticks.id}`,
     () => {
       return HttpResponse.json<{ restaurant: RestaurantDto }>({
-        restaurant: updatedKelpShakeDto,
+        restaurant: threeBroomsticksDto,
       });
     },
   ),
 
   http.put(
-    `${apiUrl}/restaurants/modify-restaurant/${threeBroomsticksDto._id}`,
+    `${apiUrl}/restaurants/modify-restaurant/${jackRabbitSlims.id}`,
     () => {
       return HttpResponse.json<{ restaurant: RestaurantDto }>({
-        restaurant: threeBroomsticksDto,
+        restaurant: visitedJackRabbitSlimsDto,
       });
     },
   ),

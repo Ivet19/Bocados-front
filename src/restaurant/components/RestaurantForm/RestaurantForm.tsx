@@ -58,13 +58,16 @@ const RestaurantForm: React.FC<RestaurantFormProps> = ({
     const value = event.target.value;
 
     if (value === "") {
-      setRestaurantData((restaurantData) => ({ ...restaurantData, rating: 0 }));
+      setRestaurantData((restaurantData) => ({
+        ...restaurantData,
+        rating: undefined,
+      }));
       return;
     }
 
     let parsedRating = parseFloat(value);
 
-    if (isNaN(parsedRating)) {
+    if (Number.isNaN(parsedRating)) {
       return;
     }
 
@@ -119,7 +122,7 @@ const RestaurantForm: React.FC<RestaurantFormProps> = ({
       if (!restaurantCleanedData.priceCategory) {
         delete restaurantCleanedData.priceCategory;
       }
-      if (restaurantCleanedData.rating === 0) {
+      if (restaurantCleanedData.rating === undefined) {
         delete restaurantCleanedData.rating;
       }
     }

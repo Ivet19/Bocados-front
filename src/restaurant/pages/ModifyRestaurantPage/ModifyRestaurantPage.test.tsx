@@ -61,28 +61,43 @@ describe("Given the ModifyRestaurantPage component", () => {
     });
   });
 
-  describe("When it renders in path /restaurants/modify-restaurant/662a1c9d7f8b9f001a1b0011", () => {
-    test("Then it should show 'A continuación puedes modificar los datos de Jack Rabbit Slim's'", async () => {
-      const expectedFormTitle =
-        /a continuación puedes modificar los datos de jack rabbit slim's/i;
-
+  describe("When it renders in path /restaurants/modify-restaurant/662a1c9d7f8b9f001a1b0011 to modify Jack Rabbit Slim's not visited restaurant", () => {
+    test("Then it should show optional inputs disabled'", async () => {
       render(
-        <MemoryRouter
-          initialEntries={[
-            `/restaurants/modify-restaurant/${jackRabbitSlims.id}`,
-          ]}
-        >
-          <Provider store={testStore}>
+        <Provider store={testStore}>
+          <MemoryRouter
+            initialEntries={[
+              `/restaurants/modify-restaurant/${jackRabbitSlims.id}`,
+            ]}
+          >
             <AppTestRouter />
-          </Provider>
-        </MemoryRouter>,
+          </MemoryRouter>
+        </Provider>,
       );
 
-      const pageTitle = await screen.findByRole("heading", {
-        name: expectedFormTitle,
+      const checkBox = await screen.findByRole("checkbox", {
+        name: /¿has visitado este restaurante?/i,
       });
 
-      expect(pageTitle).toBeInTheDocument();
+      expect(checkBox).not.toBeChecked();
+
+      const visitDateBox = await screen.findByLabelText(/fecha de la visita/i);
+      const servingsAmountBox =
+        await screen.findByLabelText(/fecha de la visita/i);
+      const waitTimeBox = await screen.findByLabelText(
+        /cantidad de las raciones/i,
+      );
+      const customerServiceBox =
+        await screen.findByLabelText(/trato recibido/i);
+      const priceCategoryBox = await screen.findByLabelText(/precio/i);
+      const ratingBox = await screen.findByLabelText(/puntuación/i);
+
+      expect(visitDateBox).toBeDisabled();
+      expect(servingsAmountBox).toBeDisabled();
+      expect(waitTimeBox).toBeDisabled();
+      expect(customerServiceBox).toBeDisabled();
+      expect(priceCategoryBox).toBeDisabled();
+      expect(ratingBox).toBeDisabled();
     });
   });
 });
