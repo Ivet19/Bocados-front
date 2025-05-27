@@ -1,10 +1,12 @@
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import { useEffect } from "react";
 import RestaurantDetailCard from "../../components/RestaurantDetailCard/RestaurantDetailCard";
 import useRestaurants from "../../hooks/useRestaurants";
 import useLoading from "../../../hooks/hooks/useLoading";
 import Loading from "../../../components/Loading/Loading";
 import { useAppSelector } from "../../../store/hooks";
+import "./RestaurantDetailPage.css";
+import "../pages.css";
 
 const RestaurantDetailPage: React.FC = () => {
   const {
@@ -33,7 +35,15 @@ const RestaurantDetailPage: React.FC = () => {
 
   if (restaurant) {
     return (
-      <RestaurantDetailCard restaurant={restaurant}></RestaurantDetailCard>
+      <div className="page">
+        <RestaurantDetailCard restaurant={restaurant}></RestaurantDetailCard>
+        <Link
+          to={`/restaurants/modify-restaurant/${restaurantId}`}
+          className="page__modify-link"
+        >
+          Modificar
+        </Link>
+      </div>
     );
   }
 };

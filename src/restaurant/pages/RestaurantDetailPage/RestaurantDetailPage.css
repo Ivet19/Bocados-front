@@ -1,0 +1,7 @@
+.page__modify-link {
+  font-size: 1.5rem;
+  border-radius: 5px;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 6px 8px;
+}
