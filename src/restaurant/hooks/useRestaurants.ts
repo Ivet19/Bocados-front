@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import RestaurantsClient from "../client/RestaurantClient";
-import useLoading from "../../hooks/hooks/useLoading";
+import useLoading from "../../ui/hooks/hooks/useLoading";
 import {
   createRestaurantActionCreator,
   deleteRestaurantActionCreator,
@@ -10,7 +10,7 @@ import {
   modifyRestaurantActionCreator,
   updateRestaurantActionCreator,
 } from "../slice/restaurantSlice";
-import useModal from "../../hooks/hooks/useModal";
+import useModal from "../../ui/hooks/hooks/useModal";
 import type { RestaurantData } from "../types";
 import type { RestaurantDto } from "../dto/typesDto";
 

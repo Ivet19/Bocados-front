@@ -1,6 +1,6 @@
 import type React from "react";
 import type { Restaurant } from "../../types";
-import Button from "../../../components/Button/Button";
+import Button from "../../../ui/components/Button/Button";
 import useRestaurants from "../../hooks/useRestaurants";
 import "./RestaurantDetailCard.css";
 

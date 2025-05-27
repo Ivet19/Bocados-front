@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import type { RestaurantPreloadedState } from "../restaurant/slice/types";
 import { restaurantsReducer } from "../restaurant/slice/restaurantSlice";
-import { modalReducer } from "../slices/slices/modalSlice";
-import { loadingReducer } from "../slices/slices/loadingSlice";
+import { modalReducer } from "../ui/slices/slices/modalSlice";
+import { loadingReducer } from "../ui/slices/slices/loadingSlice";
 
 const setupStore = (preloadedState?: RestaurantPreloadedState) => {
   const store = configureStore({

@@ -9,7 +9,7 @@ export const LazyAddRestaurantPage = lazy(
 );
 
 export const LazyNotfoundPage = lazy(
-  () => import("../../pages/NotFoundPage/NotFoundPage"),
+  () => import("../../ui/pages/NotFoundPage/NotFoundPage"),
 );
 
 export const LazyRestaurantDetailPage = lazy(

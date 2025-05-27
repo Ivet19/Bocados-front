@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router";
-import App from "../../components/App/App";
+import App from "../../ui/components/App/App";
 import {
   LazyAddRestaurantPage,
   LazyModifyRestaurantPage,

@@ -3,12 +3,12 @@ import { MemoryRouter } from "react-router";
 import { Provider } from "react-redux";
 import userEvent from "@testing-library/user-event";
 import Layout from "./Layout";
-import store from "../../store/store";
-import AppTestRouter from "../../router/AppTestRouter/AppTestRouter";
-import { jackRabbitSlims, kelpShake } from "../../restaurant/fixtures";
-import { jackRabbitSlimsDto } from "../../restaurant/dto/fixturesDto";
-import type { RestaurantState } from "../../restaurant/slice/types";
-import setupStore from "../../store/setUpStore";
+import store from "../../../store/store";
+import AppTestRouter from "../../../router/AppTestRouter/AppTestRouter";
+import { jackRabbitSlims, kelpShake } from "../../../restaurant/fixtures";
+import { jackRabbitSlimsDto } from "../../../restaurant/dto/fixturesDto";
+import type { RestaurantState } from "../../../restaurant/slice/types";
+import setupStore from "../../../store/setUpStore";
 import "./Layout.css";
 
 window.scrollTo = vitest.fn();
