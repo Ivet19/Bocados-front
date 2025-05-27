@@ -5,7 +5,7 @@ import useRestaurants from "../useRestaurants";
 import { jackRabbitSlims, visitedJackRabbitSlims } from "../../fixtures";
 import setupStore from "../../../store/setUpStore";
 import type { RestaurantState } from "../../slice/types";
-import type { ModalState } from "../../../ui/slices/types";
+import type { ModalState } from "../../../ui/uiSlice/types";
 
 describe("Given the updateRestaurantById function", () => {
   describe("When it's called with not visited Jack Rabbit Slim's restaurant id", () => {
