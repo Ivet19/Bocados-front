@@ -72,6 +72,8 @@ const RestaurantDetailCard: React.FC<RestaurantDelailCardProps> = ({
               width={35}
               height={35}
               className="button__check-icon"
+              alt=""
+              aria-hidden={true}
             />
           </Button>
         </div>
