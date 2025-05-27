@@ -5,10 +5,16 @@ import { useEffect } from "react";
 import { useAppSelector } from "../../../store/hooks";
 import type { RestaurantData } from "../../types";
 import "../pages.css";
+import useLoading from "../../../ui/hooks/hooks/useLoading";
+import Loading from "../../../ui/components/Loading/Loading";
 
 const ModifyRestaurantPage: React.FC = () => {
   const { restaurantId } = useParams<{ restaurantId: string }>();
   const { modifyRestaurant, loadRestaurantById } = useRestaurants();
+
+  const {
+    loadingState: { isLoading },
+  } = useLoading();
 
   useEffect(() => {
     window.scrollTo({ top: 0 });
@@ -37,6 +43,10 @@ const ModifyRestaurantPage: React.FC = () => {
       rating: restaurantToModify.rating ?? undefined,
       visitDate: restaurantToModify.visitDate ?? "",
     };
+
+    if (isLoading) {
+      return <Loading />;
+    }
 
     return (
       <div className="page">

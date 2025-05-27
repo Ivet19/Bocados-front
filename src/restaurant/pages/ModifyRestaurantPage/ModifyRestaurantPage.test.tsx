@@ -5,22 +5,27 @@ import { jackRabbitSlims, moesTavern } from "../../fixtures";
 import type { RestaurantState } from "../../slice/types";
 import setupStore from "../../../store/setUpStore";
 import AppTestRouter from "../../../router/AppTestRouter/AppTestRouter";
+import type { LoadingState } from "../../../ui/uiSlice/types";
 
 window.scrollTo = vitest.fn();
 
 describe("Given the ModifyRestaurantPage component", () => {
-  const initialState: { restaurantStateData: RestaurantState } = {
+  const initialState: {
+    restaurantStateData: RestaurantState;
+    loading: LoadingState;
+  } = {
     restaurantStateData: {
       restaurantsData: {
         restaurants: [moesTavern, jackRabbitSlims],
         restaurantsTotal: 2,
       },
     },
+    loading: { isLoading: false },
   };
 
   const testStore = setupStore(initialState);
   describe("When it renders in path /restaurants/modify-restaurant/662a1c9d7f8b9f001a1b0017", () => {
-    test("Then it should show 'Modificar restaurante' inside a heading", () => {
+    test("Then it should show 'Modificar restaurante' inside a heading", async () => {
       const expectedPageTitle = /modificar restaurante/i;
       render(
         <MemoryRouter
@@ -32,7 +37,7 @@ describe("Given the ModifyRestaurantPage component", () => {
         </MemoryRouter>,
       );
 
-      const pageTitle = screen.getByRole("heading", {
+      const pageTitle = await screen.findByRole("heading", {
         name: expectedPageTitle,
       });
 

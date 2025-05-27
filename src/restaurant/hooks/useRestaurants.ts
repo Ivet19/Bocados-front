@@ -74,6 +74,8 @@ const useRestaurants = () => {
       } finally {
         clearTimeout(loading);
       }
+
+      stopLoading();
     },
     [restaurantClient, dispatch, startLoading, stopLoading, showModal],
   );
@@ -99,18 +101,28 @@ const useRestaurants = () => {
       restaurantId: string,
       restaurantDto: RestaurantDto,
     ): Promise<void> => {
+      const loading = setTimeout(() => {
+        startLoading();
+      }, 200);
+
       try {
         const restaurant = await restaurantClient.updateRestaurant(
           restaurantId,
           restaurantDto,
         );
 
+        showModal(true, "RESTAURANTE MODIFICADO CORRECTAMENTE");
+
         const action = modifyRestaurantActionCreator(restaurant);
 
         dispatch(action);
       } catch {
         showModal(false, "NO SE HA PODIDO MODIFICAR EL RESTAURANTE");
+      } finally {
+        clearTimeout(loading);
       }
+
+      stopLoading();
     },
     [showModal, restaurantClient, dispatch],
   );
