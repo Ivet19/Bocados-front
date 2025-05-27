@@ -3,7 +3,7 @@ import type { UseLoadingStructure } from "../types";
 import {
   startLoadingActionCreator,
   stopLoadingActionCreator,
-} from "../../../slices/slices/loadingSlice";
+} from "../../slices/slices/loadingSlice";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 
 const useLoading = (): UseLoadingStructure => {
