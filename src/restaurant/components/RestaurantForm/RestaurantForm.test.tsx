@@ -1,11 +1,11 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router";
 import { Provider } from "react-redux";
 import RestaurantForm from "./RestaurantForm";
 import store from "../../../store/store";
 import type { RestaurantData } from "../../types";
-import { threeBroomsticks, threeBroomsticksData } from "../../fixtures";
+import { threeBroomsticks } from "../../fixtures";
 
 const user = userEvent.setup();
 
@@ -16,7 +16,7 @@ describe("Given the RestaurantForm component", () => {
     action.mockClear();
   });
 
-  describe("When it renders", () => {
+  describe("When it receives an action to add a new restaurant", () => {
     const initialRestaurantData: RestaurantData = {
       name: "",
       adress: "",
@@ -31,7 +31,6 @@ describe("Given the RestaurantForm component", () => {
       rating: undefined,
       visitDate: "",
     };
-
     test("Then it should show 'Completa los siguientes campos para añadir un nuevo restaurante' inside a heading", async () => {
       render(
         <Provider store={store}>
@@ -176,6 +175,7 @@ describe("Given the RestaurantForm component", () => {
         const waitTimeBox = screen.getByLabelText(/cantidad de las raciones/i);
         const customerServiceBox = screen.getByLabelText(/trato recibido/i);
         const priceCategoryBox = screen.getByLabelText(/precio/i);
+        const ratingBox = screen.getByLabelText(/puntuación/i);
 
         await user.click(checkBox);
 
@@ -184,6 +184,59 @@ describe("Given the RestaurantForm component", () => {
         expect(waitTimeBox).toBeEnabled();
         expect(customerServiceBox).toBeEnabled();
         expect(priceCategoryBox).toBeEnabled();
+        expect(ratingBox).toBeEnabled();
+      });
+
+      describe("And the user types 3,89 as a rating", () => {
+        test("Then the restaurant rating value should be 3,9", async () => {
+          render(
+            <Provider store={store}>
+              <RestaurantForm
+                addAction={action}
+                initialRestaurantData={initialRestaurantData}
+              />
+            </Provider>,
+            { wrapper: MemoryRouter },
+          );
+
+          const checkBox = screen.getByLabelText(
+            /¿has visitado este restaurante?/i,
+          );
+
+          const ratingBox = screen.getByLabelText(/puntuación/i);
+
+          await user.click(checkBox);
+
+          await fireEvent.change(ratingBox, { target: { value: 3.89 } });
+
+          expect(ratingBox).toHaveValue(3.9);
+        });
+      });
+
+      describe("And the user types 6 as the rating in the rating input", () => {
+        test("Then it should show 5 as the restaurant rating", async () => {
+          render(
+            <Provider store={store}>
+              <RestaurantForm
+                addAction={action}
+                initialRestaurantData={initialRestaurantData}
+              />
+            </Provider>,
+            { wrapper: MemoryRouter },
+          );
+
+          const checkBox = screen.getByLabelText(
+            /¿has visitado este restaurante?/i,
+          );
+
+          const ratingBox = screen.getByLabelText(/puntuación/i);
+
+          await user.click(checkBox);
+
+          await fireEvent.change(ratingBox, { target: { value: 6 } });
+
+          expect(ratingBox).toHaveValue(5);
+        });
       });
     });
 
@@ -258,10 +311,10 @@ describe("Given the RestaurantForm component", () => {
     });
   });
 
-  describe("When it receives a modify action, a 662a1c9d7f8b9f001a1b0015 id and Three Broomsticks restaurant's data", () => {
+  describe("When it receives an action to modify a restaurant, a 662a1c9d7f8b9f001a1b0015 id and Three Broomsticks restaurant", () => {
     const restaurantId = "662a1c9d7f8b9f001a1b0015";
 
-    const restaurantToModify = threeBroomsticksData;
+    const restaurantToModify = threeBroomsticks;
 
     const initialRestaurantToModifyData: RestaurantData = {
       name: restaurantToModify.name ?? "",
