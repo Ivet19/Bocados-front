@@ -9,8 +9,8 @@ const Loading: React.FC = () => {
         className="loading__image"
         src="/images/loading.svg"
         alt="un hombre aburrido esperando sentado a que le llegue la comida"
-        width={175}
-        height={180}
+        width={380}
+        height={380}
       />
       <span className="loading__message">¡Gracias por tu paciencia!</span>
     </div>

@@ -59,8 +59,8 @@ const RestaurantDetailCard: React.FC<RestaurantDelailCardProps> = ({
             src={imageUrl}
             alt={imageAlt}
             className="detailed-restaurant__image"
-            width={432}
-            height={243}
+            width={400}
+            height={225}
           />
           <Button
             action={() => updateRestaurant(id)}

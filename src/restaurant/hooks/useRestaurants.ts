@@ -30,7 +30,7 @@ const useRestaurants = () => {
     async (pageNumber?: number): Promise<void> => {
       const loading = setTimeout(() => {
         startLoading();
-      }, 200);
+      }, 100);
 
       try {
         const restaurantsData =
