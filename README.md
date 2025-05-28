@@ -1,6 +1,6 @@
 # 🍽️ Bocados
 
-**Bocados** is a mobile-first, single-page CRUD application built with modern front-end technologies. It allows users to keep track of restaurants in **Barcelona** they’ve visited — or would like to visit — with rich details and a user-friendly interface.
+**Bocados** is a mobile-only, single-page CRUD application built with modern front-end technologies. It allows users to keep track of restaurants in **Barcelona** they’ve visited — or would like to visit — with rich details and a user-friendly interface.
 
 ---
 
@@ -97,10 +97,70 @@ npm run build
 
 ## ✨ Future Improvements
 
-- ✅ Tagging or filtering by cuisine type
+- ✅ Tagging or filtering by cuisine type or other characteristics
 - 📍 Map integration for visual location
 - 📸 Gallery view or image uploads
 - 🔔 Reminder for unvisited saved spots
+
+---
+
+## 🧭 Project structure
+
+```
+Bocados-front/
+├── .github/
+│   └── workflows/           # CI/CD pipelines (e.g., testing, linting)
+├── .husky/                  # Git hooks (pre-commit, commit-msg, pre-push)
+├── public/                  # Static assets and the main HTML file
+│   └── index.html
+├── src/
+│   ├── assets/              # Static assets like images and fonts
+│   │   ├── images/
+│   │   └── fonts/
+│   ├── components/          # Reusable UI components
+│   │   ├── Button/
+│   │   │   ├── Button.tsx
+│   │   │   └── Button.test.tsx
+│   │   └── ...
+│   ├── features/            # Feature-specific components and logic
+│   │   ├── restaurants/
+│   │   │   ├── components/
+│   │   │   ├── hooks/
+│   │   │   ├── services/
+│   │   │   └── types.ts
+│   │   └── ...
+│   ├── pages/               # Page-level components
+│   │   ├── Home/
+│   │   │   ├── Home.tsx
+│   │   │   └── Home.test.tsx
+│   │   └── ...
+│   ├── routes/              # Application routing
+│   │   └── AppRoutes.tsx
+│   ├── services/            # API calls and external services
+│   │   └── api.ts
+│   ├── store/               # Global state management (e.g., Redux)
+│   │   ├── index.ts
+│   │   └── slices/
+│   ├── styles/              # Global styles and theme
+│   │   ├── variables.scss
+│   │   └── global.scss
+│   ├── utils/               # Utility functions and helpers
+│   │   └── formatDate.ts
+│   ├── App.tsx              # Root component
+│   └── main.tsx             # Entry point
+├── .editorconfig
+├── .env.sample              # Sample environment variables
+├── .gitignore
+├── .lintstagedrc.json
+├── commitlint.config.ts
+├── eslint.config.js
+├── jest.config.ts
+├── package.json
+├── package-lock.json
+├── sonar-project.properties
+├── tsconfig.json
+└── vite.config.ts
+```
 
 ---
 
