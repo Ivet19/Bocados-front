@@ -15,7 +15,7 @@
 
 This project is hosted on **Netlify** with continuous deployment from the `main` branch.
 
-🔗 [Live Demo](https://bocados.netlify.app/)
+🔗 [Live Demo](https://ivet-lopez-202502-front.netlify.app/)
 
 ---
 
