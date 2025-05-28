@@ -26,4 +26,8 @@
 .loading__image {
   animation: tilt 2s ease-in-out infinite;
   transform-origin: center;
+
+  @media (prefers-reduced-motion) {
+    animation: none;
+  }
 }
