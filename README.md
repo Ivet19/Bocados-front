@@ -1,6 +1,21 @@
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Redux Toolkit](https://img.shields.io/badge/Redux--Toolkit-593D88?style=for-the-badge&logo=redux&logoColor=white)
+![Vitest](https://img.shields.io/badge/Vitest-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)
+![MSW](https://img.shields.io/badge/MSW-F56A6A?style=for-the-badge)
+
 # 🍽️ Bocados
 
 **Bocados** is a mobile-only, single-page CRUD application built with modern front-end technologies. It allows users to keep track of restaurants in **Barcelona** they’ve visited — or would like to visit — with rich details and a user-friendly interface.
+
+---
+
+## 🌐 Deployment
+
+This project is hosted on **Netlify** with continuous deployment from the `main` branch.
+
+🔗 [Live Demo](https://bocados.netlify.app/)
 
 ---
 
@@ -32,10 +47,10 @@
 
 The app includes 4 main pages:
 
-1. **Restaurant List** – All restaurants at a glance
-2. **Restaurant Details** – Full info about a selected restaurant
-3. **Add Restaurant** – Form to register a new one
-4. **Edit Restaurant** – Form to modify existing entries
+1. **Restaurant List** – All restaurants at a glance (`/`)
+2. **Restaurant Details** – Full info about a selected restaurant (`/:restaurantId`)
+3. **Add Restaurant** – Form to register a new one (`/add-restaurant`)
+4. **Edit Restaurant** – Form to modify existing entries (`/modify-restaurant/:restaurantId`)
 
 ---
 
@@ -108,58 +123,67 @@ npm run build
 
 ```
 Bocados-front/
-├── .github/
-│   └── workflows/           # CI/CD pipelines (e.g., testing, linting)
-├── .husky/                  # Git hooks (pre-commit, commit-msg, pre-push)
-├── public/                  # Static assets and the main HTML file
-│   └── index.html
+├── .github/                    # GitHub Actions workflows (CI/CD)
+│   └── workflows/
+│       ├── audit.yml
+│       ├── sonar.yml
+│       └── testing.yml
+├── .husky/                     # Git hooks
+├── public/                     # Static assets and meta files
+│   ├── _redirects
+│   ├── favicon.svg
+│   ├── robots.txt
+│   ├── icons/                  # All SVG icons
+│   └── images/                 # Static image files (e.g., logo, loading)
 ├── src/
-│   ├── assets/              # Static assets like images and fonts
-│   │   ├── images/
-│   │   └── fonts/
-│   ├── components/          # Reusable UI components
-│   │   ├── Button/
-│   │   │   ├── Button.tsx
-│   │   │   └── Button.test.tsx
-│   │   └── ...
-│   ├── features/            # Feature-specific components and logic
-│   │   ├── restaurants/
-│   │   │   ├── components/
-│   │   │   ├── hooks/
-│   │   │   ├── services/
-│   │   │   └── types.ts
-│   │   └── ...
-│   ├── pages/               # Page-level components
-│   │   ├── Home/
-│   │   │   ├── Home.tsx
-│   │   │   └── Home.test.tsx
-│   │   └── ...
-│   ├── routes/              # Application routing
-│   │   └── AppRoutes.tsx
-│   ├── services/            # API calls and external services
-│   │   └── api.ts
-│   ├── store/               # Global state management (e.g., Redux)
-│   │   ├── index.ts
-│   │   └── slices/
-│   ├── styles/              # Global styles and theme
-│   │   ├── variables.scss
-│   │   └── global.scss
-│   ├── utils/               # Utility functions and helpers
-│   │   └── formatDate.ts
-│   ├── App.tsx              # Root component
-│   └── main.tsx             # Entry point
+│   ├── main.tsx                # App entry point
+│   ├── styles/                 # Global styles (e.g., styles.css)
+│
+│   ├── router/                 # Routing configuration
+│   │   ├── AppRouter/
+│   │   ├── AppTestRouter/
+│   │   └── LazyPages/
+│
+│   ├── store/                  # Redux store setup & hooks
+│   │   ├── store.ts
+│   │   ├── setUpStore.ts
+│   │   └── hooks.ts
+│
+│   ├── restaurant/             # Feature domain: Restaurants
+│   │   ├── client/             # API calls and types
+│   │   ├── components/         # Reusable components for restaurant views
+│   │   ├── dto/                # DTOs, mappers, and type transformations
+│   │   ├── fixtures.ts         # Mock data
+│   │   ├── hooks/              # Feature-specific hooks
+│   │   ├── mocks/              # MSW handlers (testing)
+│   │   ├── pages/              # Page-level components for routes
+│   │   ├── slice/              # Redux slice for restaurants
+│   │   └── types.ts            # Core feature types
+│
+│   ├── ui/                     # UI-specific shared components and state
+│   │   ├── components/         # Atomic/shared UI elements (Button, Modal, etc.)
+│   │   ├── hooks/              # UI-layer hooks (modal, loading)
+│   │   ├── pages/              # UI-specific pages (e.g., NotFound)
+│   │   └── uiSlice/            # Redux slice for UI state
+│
+│   └── setupTests.ts           # Global test setup
+│
 ├── .editorconfig
-├── .env.sample              # Sample environment variables
+├── .env.sample
 ├── .gitignore
 ├── .lintstagedrc.json
+├── README.md
 ├── commitlint.config.ts
 ├── eslint.config.js
-├── jest.config.ts
+├── index.html                  # Vite template entry
 ├── package.json
 ├── package-lock.json
 ├── sonar-project.properties
+├── tsconfig.app.json
 ├── tsconfig.json
+├── tsconfig.node.json
 └── vite.config.ts
+
 ```
 
 ---
