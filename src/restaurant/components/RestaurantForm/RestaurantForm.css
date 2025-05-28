@@ -14,7 +14,7 @@
 }
 
 .restaurant-form__info--optionals {
-  text-decoration: underline;
+  font-weight: 600;
 }
 
 .restaurant-form__groups {
